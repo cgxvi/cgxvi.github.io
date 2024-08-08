@@ -28,14 +28,6 @@ header p { text-align: left; margin: 0; }
 
 footer { margin-bottom: 20px; }
 
-.site-title::before {
-content: url("/assets/images/ionic_interactions_bw.jpg");
-display: inline-block;
-position: relative;
-width: 35px;
-top: 5px;
-}
-
 /** Highlight/Markup */
 ::selection { background: var(--selection-background); color: var(--selection-text); }
 
