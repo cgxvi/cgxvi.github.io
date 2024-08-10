@@ -5,7 +5,7 @@
 /* To center images */
 .center { text-align: center; }
 
-ul { list-style-type: none; }
+li { list-style: none; padding-left: 0; margin-left: 0; }
 
 /** Style variables */
 /** Global */
@@ -260,4 +260,4 @@ pre { background-color: var(--background-color); border: none; padding: 0; margi
 /* To center images */
 .center { text-align: center; }
 
-ul { list-style-type: none; }
+li { list-style: none; padding-left: 0; margin-left: 0; }
