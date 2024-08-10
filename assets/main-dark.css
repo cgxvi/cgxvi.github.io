@@ -254,3 +254,5 @@ pre { background-color: var(--background-color); border: none; padding: 0; margi
 /* Literal.Number.Integer.Long */
 /* To center images */
 .center { text-align: center; }
+
+ul { list-style-type: none; }
