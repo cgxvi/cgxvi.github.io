@@ -38,7 +38,7 @@ footer { margin-bottom: 20px; }
 
 :not(.menu) > ul { list-style-type: none; }
 
-:not(.menu) > ul > li:before { content: "-"; margin-right: 9px; }
+:not(.menu) > ul > li:before { content: none; margin-right: 9px; }
 
 /** Header/Navigation */
 .menu { border-top: var(--border); border-bottom: var(--border); margin-bottom: 25px; }
@@ -254,7 +254,3 @@ pre { background-color: var(--background-color); border: none; padding: 0; margi
 /* Literal.Number.Integer.Long */
 /* To center images */
 .center { text-align: center; }
-
-li { list-style: none; padding-left: 0; margin-left: 0; }
-
-ul { list-style: none; padding-left: 0; margin-left: 0; }
