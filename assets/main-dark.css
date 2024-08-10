@@ -252,3 +252,5 @@ pre { background-color: var(--background-color); border: none; padding: 0; margi
 .highlight .il { color: var(--code-color-14); }
 
 /* Literal.Number.Integer.Long */
+/* To center images */
+.center { text-align: center; }
