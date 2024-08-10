@@ -256,3 +256,5 @@ pre { background-color: var(--background-color); border: none; padding: 0; margi
 .center { text-align: center; }
 
 li { list-style: none; padding-left: 0; margin-left: 0; }
+
+ul { list-style: none; padding-left: 0; margin-left: 0; }

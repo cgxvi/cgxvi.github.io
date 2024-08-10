@@ -7,6 +7,8 @@
 
 li { list-style: none; padding-left: 0; margin-left: 0; }
 
+ul { list-style: none; padding-left: 0; margin-left: 0; }
+
 /** Style variables */
 /** Global */
 body { background-color: var(--background-color); margin: 0 auto; padding: 0; font-family: "Source Code Pro", monospace; font-size: 12.5px; color: var(--text-color); text-align: left; line-height: 1.5 !important; }
@@ -261,6 +263,8 @@ pre { background-color: var(--background-color); border: none; padding: 0; margi
 .center { text-align: center; }
 
 li { list-style: none; padding-left: 0; margin-left: 0; }
+
+ul { list-style: none; padding-left: 0; margin-left: 0; }
 
 @media (prefers-color-scheme: dark) { /** Dark theme variables */
   :root { --base-color: #DBDBDB; --border: dashed 1px rgba(219, 219, 219, 0.9); --selection-background: rgba(219, 219, 219, 0.99); --selection-text: #000; --background-color: #000; --text-color: var(--base-color); --placeholder-color: var(--base-color); --link-color: var(--base-color); --code-color-1: #aaaaaa; --code-color-2: #ffffcc; --code-color-3: #F00000; --code-color-4: #F0A0A0; --code-color-5: #b38aff; --code-color-6: #5ba711; --code-color-7: #e4e477; --code-color-8: #000080; --code-color-9: #05ca05; --code-color-10: #888888; --code-color-11: #555555; --code-color-12: #800080; --code-color-13: #00d4d4; --code-color-14: #00c1c1; --code-color-15: #ed9d13; --code-color-16: #1e90ff; --code-color-17: #800000; --code-color-18: #bbbbbb; } }
