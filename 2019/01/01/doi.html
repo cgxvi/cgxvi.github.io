@@ -7,9 +7,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>UGOT DOI't</title><!-- Begin Jekyll SEO tag v2.8.0 -->
+  <title>DOI't</title><!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="UGOT DOI’t" />
+<meta property="og:title" content="DOI’t" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Back to Pages" />
 <meta property="og:description" content="Back to Pages" />
@@ -19,9 +19,9 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-01-01T01:00:01+01:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="UGOT DOI’t" />
+<meta property="twitter:title" content="DOI’t" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-01-01T01:00:01+01:00","datePublished":"2019-01-01T01:00:01+01:00","description":"Back to Pages","headline":"UGOT DOI’t","mainEntityOfPage":{"@type":"WebPage","@id":"https://gmcl.se/2019/01/01/doi.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://gmcl.se/assets/images/ionic_interactions_bw.jpg"}},"url":"https://gmcl.se/2019/01/01/doi.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-01-01T01:00:01+01:00","datePublished":"2019-01-01T01:00:01+01:00","description":"Back to Pages","headline":"DOI’t","mainEntityOfPage":{"@type":"WebPage","@id":"https://gmcl.se/2019/01/01/doi.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://gmcl.se/assets/images/ionic_interactions_bw.jpg"}},"url":"https://gmcl.se/2019/01/01/doi.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" type="text/css" href="/assets/main-light.css"></head>
 <body>
@@ -37,11 +37,33 @@
 
 
 <main>
-      <p><a href="https://gmcl.se/pages/"><em>Back to Pages</em></a></p>
+      <p><a href="https://example.se/pages/"><em>Back to Pages</em></a></p>
 
-<h2 id="ugot-doit">UGOT DOI’t</h2>
-<p><br />
-https://doi-org.ezproxy.ub.gu.se/</p>
+<p>&lt;!DOCTYPE html&gt;</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Submission Form</title>
+    <script>
+        function updateURL() {
+            const inputText = document.getElementById('userInput').value;
+            const baseURL = 'https://doi-org.ezproxy.ub.gu.se/';
+            const fullURL = baseURL + encodeURIComponent(inputText);
+            document.getElementById('result').innerText = fullURL;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="event.preventDefault(); updateURL();">
+        <label for="userInput">Enter DOI (10.xxxx/yyyy.zzzz):</label>
+        <input type="text" id="userInput" name="text" />
+        <button type="submit">DOI't</button>
+    </form>
+    <p id="result"></p>
+</body>
+</html>
+
 
 
     </main><footer>
