@@ -12,7 +12,3 @@ function updateURL() {
     document.getElementById('result').innerText = fullURL;
 }
 
-function clearForm() {
-    document.getElementById('userInput').value = '';
-    document.getElementById('result').innerText = '';
-}
