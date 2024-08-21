@@ -11,3 +11,8 @@ function updateURL() {
     const fullURL = baseURL + encodeURIComponent(inputText);
     document.getElementById('result').innerText = fullURL;
 }
+
+function clearForm() {
+    document.getElementById('userInput').value = '';
+    document.getElementById('result').innerText = '';
+}
