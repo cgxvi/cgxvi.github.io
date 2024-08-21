@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://gmcl.se/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gmcl.se/" rel="alternate" type="text/html" /><updated>2024-08-21T19:19:04+02:00</updated><id>https://gmcl.se/feed.xml</id><title type="html">GMCL</title><subtitle>GMCL.</subtitle><entry><title type="html">I/B Oden position</title><link href="https://gmcl.se/2024/08/07/GEOEO.html" rel="alternate" type="text/html" title="I/B Oden position" /><published>2024-08-07T12:00:00+02:00</published><updated>2024-08-07T12:00:00+02:00</updated><id>https://gmcl.se/2024/08/07/GEOEO</id><content type="html" xml:base="https://gmcl.se/2024/08/07/GEOEO.html"><![CDATA[<p><a href="https://gmcl.se/pages/"><em>Back to Pages</em></a></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://gmcl.se/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gmcl.se/" rel="alternate" type="text/html" /><updated>2024-08-21T19:24:48+02:00</updated><id>https://gmcl.se/feed.xml</id><title type="html">GMCL</title><subtitle>GMCL.</subtitle><entry><title type="html">I/B Oden position</title><link href="https://gmcl.se/2024/08/07/GEOEO.html" rel="alternate" type="text/html" title="I/B Oden position" /><published>2024-08-07T12:00:00+02:00</published><updated>2024-08-07T12:00:00+02:00</updated><id>https://gmcl.se/2024/08/07/GEOEO</id><content type="html" xml:base="https://gmcl.se/2024/08/07/GEOEO.html"><![CDATA[<p><a href="https://gmcl.se/pages/"><em>Back to Pages</em></a></p>
 
 <h2 id="the-position-of-ib-oden-during-geoeo---north-of-greenland-2024">The position of I/B Oden during GEOEO - North of Greenland 2024</h2>
 
@@ -26,11 +26,4 @@
 </form>
 <p id="result"></p>
 
-<script>
-    function updateURL() {
-        const inputText = document.getElementById('userInput').value;
-        const baseURL = 'https://doi-org.ezproxy.ub.gu.se/';
-        const fullURL = baseURL + encodeURIComponent(inputText);
-        document.getElementById('result').innerText = fullURL;
-    }
-</script>]]></content><author><name></name></author><summary type="html"><![CDATA[Back to Pages]]></summary></entry></feed>
+<script src="script.js"></script>]]></content><author><name></name></author><summary type="html"><![CDATA[Back to Pages]]></summary></entry></feed>
