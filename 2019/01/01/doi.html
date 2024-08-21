@@ -37,32 +37,23 @@
 
 
 <main>
-      <p><a href="https://example.se/pages/"><em>Back to Pages</em></a></p>
+      <p><em>Back to Pages</em></p>
 
-<p>&lt;!DOCTYPE html&gt;</p>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Text Submission Form</title>
-    <script>
-        function updateURL() {
-            const inputText = document.getElementById('userInput').value;
-            const baseURL = 'https://doi-org.ezproxy.ub.gu.se/';
-            const fullURL = baseURL + encodeURIComponent(inputText);
-            document.getElementById('result').innerText = fullURL;
-        }
-    </script>
-</head>
-<body>
-    <form onsubmit="event.preventDefault(); updateURL();">
-        <label for="userInput">Enter DOI (10.xxxx/yyyy.zzzz):</label>
-        <input type="text" id="userInput" name="text" />
-        <button type="submit">DOI't</button>
-    </form>
-    <p id="result"></p>
-</body>
-</html>
+<form onsubmit="event.preventDefault(); updateURL();">
+    <label for="userInput">Enter text:</label>
+    <input type="text" id="userInput" name="text" />
+    <button type="submit">Submit</button>
+</form>
+<p id="result"></p>
+
+<script>
+    function updateURL() {
+        const inputText = document.getElementById('userInput').value;
+        const baseURL = 'https://doi-org.ezproxy.ub.gu.se/';
+        const fullURL = baseURL + encodeURIComponent(inputText);
+        document.getElementById('result').innerText = fullURL;
+    }
+</script>
 
 
 

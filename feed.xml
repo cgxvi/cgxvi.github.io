@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://gmcl.se/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gmcl.se/" rel="alternate" type="text/html" /><updated>2024-08-21T19:14:26+02:00</updated><id>https://gmcl.se/feed.xml</id><title type="html">GMCL</title><subtitle>GMCL.</subtitle><entry><title type="html">I/B Oden position</title><link href="https://gmcl.se/2024/08/07/GEOEO.html" rel="alternate" type="text/html" title="I/B Oden position" /><published>2024-08-07T12:00:00+02:00</published><updated>2024-08-07T12:00:00+02:00</updated><id>https://gmcl.se/2024/08/07/GEOEO</id><content type="html" xml:base="https://gmcl.se/2024/08/07/GEOEO.html"><![CDATA[<p><a href="https://gmcl.se/pages/"><em>Back to Pages</em></a></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://gmcl.se/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gmcl.se/" rel="alternate" type="text/html" /><updated>2024-08-21T19:19:04+02:00</updated><id>https://gmcl.se/feed.xml</id><title type="html">GMCL</title><subtitle>GMCL.</subtitle><entry><title type="html">I/B Oden position</title><link href="https://gmcl.se/2024/08/07/GEOEO.html" rel="alternate" type="text/html" title="I/B Oden position" /><published>2024-08-07T12:00:00+02:00</published><updated>2024-08-07T12:00:00+02:00</updated><id>https://gmcl.se/2024/08/07/GEOEO</id><content type="html" xml:base="https://gmcl.se/2024/08/07/GEOEO.html"><![CDATA[<p><a href="https://gmcl.se/pages/"><em>Back to Pages</em></a></p>
 
 <h2 id="the-position-of-ib-oden-during-geoeo---north-of-greenland-2024">The position of I/B Oden during GEOEO - North of Greenland 2024</h2>
 
@@ -17,29 +17,20 @@
 
 <p class="center"><img src="/assets/images/Lena_discharge_1936-2020.jpg" alt="Lena River Discharge" width="412" height="305" /></p>
 
-<p>Juhls, B., Stedmon, C. A., Morgenstern, A., Meyer, H., Hölemann, J., Heim, B., Povazhnyi, V., &amp; Overduin, P. P. (2020). Identifying Drivers of Seasonality in Lena River Biogeochemistry and Dissolved Organic Matter Fluxes. Frontiers in Environmental Science, 8(May), 1–15. <a href="https://doi.org/10.3389/fenvs.2020.00053">https://doi.org/10.3389/fenvs.2020.00053</a></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Back to Pages]]></summary></entry><entry><title type="html">DOI’t</title><link href="https://gmcl.se/2019/01/01/doi.html" rel="alternate" type="text/html" title="DOI’t" /><published>2019-01-01T01:00:01+01:00</published><updated>2019-01-01T01:00:01+01:00</updated><id>https://gmcl.se/2019/01/01/doi</id><content type="html" xml:base="https://gmcl.se/2019/01/01/doi.html"><![CDATA[<p><a href="https://example.se/pages/"><em>Back to Pages</em></a></p>
+<p>Juhls, B., Stedmon, C. A., Morgenstern, A., Meyer, H., Hölemann, J., Heim, B., Povazhnyi, V., &amp; Overduin, P. P. (2020). Identifying Drivers of Seasonality in Lena River Biogeochemistry and Dissolved Organic Matter Fluxes. Frontiers in Environmental Science, 8(May), 1–15. <a href="https://doi.org/10.3389/fenvs.2020.00053">https://doi.org/10.3389/fenvs.2020.00053</a></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Back to Pages]]></summary></entry><entry><title type="html">DOI’t</title><link href="https://gmcl.se/2019/01/01/doi.html" rel="alternate" type="text/html" title="DOI’t" /><published>2019-01-01T01:00:01+01:00</published><updated>2019-01-01T01:00:01+01:00</updated><id>https://gmcl.se/2019/01/01/doi</id><content type="html" xml:base="https://gmcl.se/2019/01/01/doi.html"><![CDATA[<p><em>Back to Pages</em></p>
 
-<p>&lt;!DOCTYPE html&gt;</p>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Text Submission Form</title>
-    <script>
-        function updateURL() {
-            const inputText = document.getElementById('userInput').value;
-            const baseURL = 'https://doi-org.ezproxy.ub.gu.se/';
-            const fullURL = baseURL + encodeURIComponent(inputText);
-            document.getElementById('result').innerText = fullURL;
-        }
-    </script>
-</head>
-<body>
-    <form onsubmit="event.preventDefault(); updateURL();">
-        <label for="userInput">Enter DOI (10.xxxx/yyyy.zzzz):</label>
-        <input type="text" id="userInput" name="text" />
-        <button type="submit">DOI't</button>
-    </form>
-    <p id="result"></p>
-</body>
-</html>]]></content><author><name></name></author><summary type="html"><![CDATA[Back to Pages]]></summary></entry></feed>
+<form onsubmit="event.preventDefault(); updateURL();">
+    <label for="userInput">Enter text:</label>
+    <input type="text" id="userInput" name="text" />
+    <button type="submit">Submit</button>
+</form>
+<p id="result"></p>
+
+<script>
+    function updateURL() {
+        const inputText = document.getElementById('userInput').value;
+        const baseURL = 'https://doi-org.ezproxy.ub.gu.se/';
+        const fullURL = baseURL + encodeURIComponent(inputText);
+        document.getElementById('result').innerText = fullURL;
+    }
+</script>]]></content><author><name></name></author><summary type="html"><![CDATA[Back to Pages]]></summary></entry></feed>
