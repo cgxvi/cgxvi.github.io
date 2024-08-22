@@ -55,7 +55,7 @@ header p { text-align: left; margin: 5px; padding-left: 5px; }
 /** Form */
 input, select, textarea { padding: 0; margin: 0; -webkit-appearance: none; -webkit-border-radius: 0; }
 
-input[type=text], select, textarea { width: 100%; resize: none; background-color: var(--placeholder-color); color: var(--text-color); caret-color: var(--text-color); font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; }
+input[type=text], select, textarea { width: 90%; resize: none; background-color: var(--placeholder-color); color: var(--text-color); caret-color: var(--text-color); font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; }
 
 input, select, textarea, textarea::-webkit-input-placeholder { text-indent: 0px; }
 
