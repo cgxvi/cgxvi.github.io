@@ -53,7 +53,7 @@ form { display: flex; flex-direction: column; gap: 10px; /* Adjust the gap as ne
 
 label { margin-bottom: 10px; /* Add space between label and input */ padding-left: 5px; }
 
-input, button { width: calc(100% - 10px); /* Adjust width to account for padding */ margin-bottom: 10px; /* Add space between each element */ padding-left: 5px; padding-right: 5px; }
+input, button { width: 99%; /* Adjust width to account for padding */ margin-bottom: 10px; /* Add space between each element */ margin-left: 5px; }
 
 /** Code and syntax highlighting */
 .lineno { color: var(--code-color-1); margin-right: 15px; }
