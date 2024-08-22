@@ -52,11 +52,13 @@ header p { text-align: left; margin: 5px; padding-left: 5px; }
 
 .menu ul li a:hover { text-decoration: none; color: var(--background-color); background-color: var(--base-color); }
 
-form { display: flex; flex-direction: column; gap: 10px; /* Adjust the gap as needed */ }
+form { display: flex; flex-direction: column; gap: 5px; /* Adjust the gap as needed */ }
 
-label { margin-bottom: 10px; /* Add space between label and input */ padding-left: 5px; }
+label { margin-bottom: 5px; /* Add space between label and input */ padding-left: 5px; }
 
-input, button { width: 95%; /* Adjust width to account for padding */ margin-bottom: 10px; /* Add space between each element */ margin-left: 5px; margin-right: 5px; }
+input { width: 95%; /* Adjust width to account for padding */ margin-bottom: 5px; /* Add space between each element */ margin-left: 5px; margin-right: 5px; }
+
+button { width: 30%; /* Adjust width to account for padding */ margin-bottom: 5px; /* Add space between each element */ margin-left: 5px; margin-right: 5px; }
 
 /** Code and syntax highlighting */
 .lineno { color: var(--code-color-1); margin-right: 15px; }
