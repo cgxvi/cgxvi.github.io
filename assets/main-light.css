@@ -31,8 +31,6 @@ header p { text-align: left; margin: 5px; padding-left: 5px; }
 
 footer { margin-bottom: 10px; padding-left: 5px; padding-right: 5px; padding-top: 5px; }
 
-footer::before { content: ""; position: absolute; top: 0; left: 5px; /* Padding from the left */ right: 5px; /* Padding from the right */ height: 1px; /* Height of the border */ background-color: var(--border-color); /* Adjust the color as needed */ }
-
 /** Highlight/Markup */
 ::selection { background: var(--selection-background); color: var(--selection-text); }
 
@@ -57,7 +55,7 @@ footer::before { content: ""; position: absolute; top: 0; left: 5px; /* Padding 
 .menu ul li a:hover { text-decoration: none; color: var(--background-color); background-color: var(--base-color); }
 
 /** Form */
-input, select, textarea { padding: 0; margin: 0; -webkit-appearance: none; -webkit-border-radius: 0; border: 1px solid black; }
+input, select, textarea { padding: 5px; margin: 0; -webkit-appearance: none; -webkit-border-radius: 0; border: 1px solid black; }
 
 input[type=text], select, textarea { width: 100%; resize: none; background-color: var(--placeholder-color); color: var(--text-color); caret-color: var(--text-color); font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; }
 
