@@ -20,7 +20,7 @@ a:hover { color: var(--background-color); background-color: var(--base-color); }
 
 p { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; margin-bottom: 15px; padding-left: 5px; padding-right: 5px; }
 
-footer { color: var(--text-color); border-top: var(--border); margin: 20px auto 15px; text-align: right; width: 85%; }
+footer { color: var(--text-color); border-top: var(--border); margin: 20px auto 15px; text-align: right; width: 95%; }
 
 header { margin-top: 25px; margin-bottom: 10px; padding-left: 5px; padding-right: 5px; padding-top: 5px; }
 
@@ -51,7 +51,7 @@ header p { text-align: left; margin: 5px; padding-left: 5px; }
 
 form { display: flex; flex-direction: column; gap: 10px; /* Adjust the gap as needed */ }
 
-label, input, button { margin-bottom: 10px; /* Add space between each element */ }
+label, input, button { margin-bottom: 10px; /* Add space between each element */ padding-left: 5px; /* Add left padding */ padding-right: 5px; /* Add right padding */ }
 
 /** Code and syntax highlighting */
 .lineno { color: var(--code-color-1); margin-right: 15px; }
