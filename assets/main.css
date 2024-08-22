@@ -29,6 +29,8 @@ header { margin-top: 25px; margin-bottom: 10px; padding-left: 5px; padding-right
 
 header p { text-align: left; margin: 5px; padding-left: 5px; }
 
+footer::before { content: ""; display: block; height: 5px; /* Add the desired top padding */ width: 95%; }
+
 /** Highlight/Markup */
 ::selection { background: var(--selection-background); color: var(--selection-text); }
 
@@ -53,11 +55,11 @@ header p { text-align: left; margin: 5px; padding-left: 5px; }
 .menu ul li a:hover { text-decoration: none; color: var(--background-color); background-color: var(--base-color); }
 
 /** Form */
-input, select, textarea { padding: 0; margin: 0; -webkit-appearance: none; -webkit-border-radius: 0; padding: 10px 5px 0 5px; }
+input, select, textarea { padding: 0; margin: 0; -webkit-appearance: none; -webkit-border-radius: 0; }
 
-input[type=text], select, textarea { width: 50%; resize: none; background-color: var(--placeholder-color); color: var(--text-color); caret-color: var(--text-color); font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; padding: 10px 5px 0 5px; }
+input[type=text], select, textarea { width: 50%; resize: none; background-color: var(--placeholder-color); color: var(--text-color); caret-color: var(--text-color); font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; }
 
-input, select, textarea, textarea::-webkit-input-placeholder { text-indent: 0px; padding: 10px 5px 0 5px; }
+input, select, textarea, textarea::-webkit-input-placeholder { text-indent: 0px; }
 
 ::placeholder { color: var(--placeholder-color); opacity: 1; }
 
@@ -65,13 +67,13 @@ input, select, textarea, textarea::-webkit-input-placeholder { text-indent: 0px;
 
 ::-ms-input-placeholder { color: var(--placeholder-color); }
 
-input[type=submit] { font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; cursor: pointer; color: var(--link-color); background-color: var(--background-color); padding: 10px 5px 0 5px; }
+input[type=submit] { font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; cursor: pointer; color: var(--link-color); background-color: var(--background-color); }
 
 input[type=submit]:hover { color: var(--background-color); background-color: var(--base-color); }
 
 *:focus { outline: none; }
 
-textarea { vertical-align: top; padding: 10px 5px 0 5px; }
+textarea { vertical-align: top; padding-left: 5px; }
 
 /** Code and syntax highlighting */
 .lineno { color: var(--code-color-1); margin-right: 15px; }
