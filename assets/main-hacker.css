@@ -52,7 +52,7 @@ footer { margin-bottom: 10px; padding-left: 5px; padding-right: 5px; padding-top
 .menu ul li a:hover { text-decoration: none; color: var(--background-color); background-color: var(--base-color); }
 
 /** Form */
-input, select, textarea { padding: 5px; margin: 0; -webkit-appearance: none; -webkit-border-radius: 0; border: 1px solid black; }
+input, select, textarea { padding: 5px; margin: 0; -webkit-appearance: none; -webkit-border-radius: 0; border: 1px solid black; box-sizing: border-box; }
 
 input[type=text], select, textarea { width: 100%; resize: none; background-color: var(--placeholder-color); color: var(--text-color); caret-color: var(--text-color); font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; }
 
