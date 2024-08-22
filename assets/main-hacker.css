@@ -20,7 +20,7 @@ a:hover { color: var(--background-color); background-color: var(--base-color); }
 
 p { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; margin-bottom: 15px; padding-left: 5px; padding-right: 5px; }
 
-footer { color: var(--text-color); border-top: var(--border); margin: 20px auto 15px; padding-top: 10px; text-align: right; padding-right: 5px; padding-left: 5px; padding-top: 5px; }
+footer { color: var(--text-color); border-top: none; margin: 20px auto 15px; padding-top: 10px; text-align: right; padding-right: 5px; padding-left: 5px; padding-top: 5px; }
 
 header { margin-top: 25px; margin-bottom: 10px; padding-left: 5px; padding-right: 5px; padding-top: 5px; }
 
@@ -54,9 +54,9 @@ footer::before { content: ""; position: absolute; top: 0; left: 5px; /* Padding 
 .menu ul li a:hover { text-decoration: none; color: var(--background-color); background-color: var(--base-color); }
 
 /** Form */
-input, select, textarea { padding: 0; margin: 0; -webkit-appearance: none; -webkit-border-radius: 0; border: 1px; }
+input, select, textarea { padding: 0; margin: 0; -webkit-appearance: none; -webkit-border-radius: 0; border: 1px; padding-left: 5px; padding-right: 5px; }
 
-input[type=text], select, textarea { width: 100%; resize: none; background-color: var(--placeholder-color); color: var(--text-color); caret-color: var(--text-color); font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; }
+input[type=text], select, textarea { width: 100%; resize: none; background-color: var(--placeholder-color); color: var(--text-color); caret-color: var(--text-color); font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; padding-left: 5px; padding-right: 5px; }
 
 input, select, textarea, textarea::-webkit-input-placeholder { text-indent: 0px; }
 
