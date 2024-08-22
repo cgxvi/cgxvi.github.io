@@ -7,7 +7,7 @@
 
 /** Style variables */
 /** Global */
-body { background-color: var(--background-color); margin: 0 auto; padding: 0; font-family: "Source Code Pro", monospace; font-size: 12.5px; color: var(--text-color); text-align: left; line-height: 1.5 !important; }
+body { background-color: var(--background-color); margin: 0 auto; padding: 0; padding-top: 25px; font-family: "Source Code Pro", monospace; font-size: 12.5px; color: var(--text-color); text-align: left; line-height: 1.5 !important; }
 
 h1, h2, h3, h4, h5, h6 { font-size: 12.5px; margin: 0px; margin-top: 22px; font-weight: bold; color: var(--text-color); }
 
@@ -37,7 +37,7 @@ footer { margin-bottom: 20px; }
 ::-moz-selection { background: var(--selection-background); color: var(--selection-text); }
 
 /** Lists */
-:not(.menu) > ul { list-style: none; padding-left: 5px; }
+:not(.menu) > ul { list-style: none; padding-left: 0; }
 
 :not(.menu) > ul { list-style-type: none; }
 
