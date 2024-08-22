@@ -16,11 +16,11 @@ a:hover { color: var(--background-color); background-color: var(--base-color); }
 
 @media only screen and (max-device-width: 500px) { * { font-size: 12px !important; } }
 /** Layout */
-.container { background-color: var(--extra-background-color); width: 90%; max-width: 600px; margin-right: auto; margin-left: auto; border: 1px solid black; }
+.container { background-color: var(--extra-background-color); width: 90%; max-width: 600px; margin-right: auto; margin-left: auto; border: 2px solid black; }
 
 p { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; margin-bottom: 15px; padding-left: 5px; padding-right: 5px; }
 
-footer { color: var(--text-color); border-top: var(--border); margin: 20px auto 15px; padding-top: 10px; text-align: right; padding-right: 5px; padding-top: 5px; }
+footer { color: var(--text-color); border-top: var(--border); margin: 20px auto 15px; padding-top: 10px; text-align: right; padding-right: 5px; padding-left: 5px; padding-top: 5px; }
 
 header { margin-top: 25px; margin-bottom: 10px; padding-left: 5px; padding-right: 5px; padding-top: 5px; }
 
