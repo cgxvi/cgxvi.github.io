@@ -23,13 +23,13 @@ a:hover { color: var(--background-color); background-color: var(--base-color); }
 
 p { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; margin-bottom: 15px; padding-left: 5px; padding-right: 5px; }
 
-footer { color: var(--text-color); border-top: var(--border); margin: 20px auto 15px; padding-top: 10px; text-align: right; }
+footer { color: var(--text-color); border-top: var(--border); margin: 20px auto 15px; padding-top: 10px; text-align: right; padding-right: 5px; padding-top: 5px; }
 
 header { margin-top: 25px; margin-bottom: 10px; padding-left: 5px; padding-right: 5px; padding-top: 5px; }
 
 header p { text-align: left; margin: 5px; padding-left: 5px; }
 
-footer { margin-bottom: 10px; }
+footer { margin-bottom: 10px; padding-right: 5px; padding-top: 5px; }
 
 /** Highlight/Markup */
 ::selection { background: var(--selection-background); color: var(--selection-text); }
@@ -37,7 +37,7 @@ footer { margin-bottom: 10px; }
 ::-moz-selection { background: var(--selection-background); color: var(--selection-text); }
 
 /** Lists */
-:not(.menu) > ul { list-style: none; padding-left: 0; }
+:not(.menu) > ul { list-style: none; padding-left: 5px; }
 
 :not(.menu) > ul { list-style-type: none; }
 
