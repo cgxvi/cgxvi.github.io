@@ -23,7 +23,7 @@ a:hover { color: var(--background-color); background-color: var(--base-color); }
 
 p { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; margin-bottom: 15px; padding-left: 5px; padding-right: 5px; }
 
-footer { color: var(--text-color); border-top: var(--border); margin: 20px auto 15px; padding-left: 5px; text-align: right; width: 50%; }
+footer { color: var(--text-color); border-top: var(--border); margin: 20px auto 15px; text-align: right; width: 85%; }
 
 header { margin-top: 25px; margin-bottom: 10px; padding-left: 5px; padding-right: 5px; padding-top: 5px; }
 
@@ -52,26 +52,9 @@ header p { text-align: left; margin: 5px; padding-left: 5px; }
 
 .menu ul li a:hover { text-decoration: none; color: var(--background-color); background-color: var(--base-color); }
 
-/** Form */
-input, select, textarea { padding: 0; margin: 0; -webkit-appearance: none; -webkit-border-radius: 0; padding-left: 5px; }
+form { display: flex; flex-direction: column; gap: 10px; /* Adjust the gap as needed */ }
 
-input[type=text], select, textarea { width: 50%; resize: none; background-color: var(--placeholder-color); color: var(--text-color); caret-color: var(--text-color); font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; }
-
-input, select, textarea, textarea::-webkit-input-placeholder { text-indent: 0px; }
-
-::placeholder { color: var(--placeholder-color); opacity: 1; }
-
-:-ms-input-placeholder { color: var(--placeholder-color); }
-
-::-ms-input-placeholder { color: var(--placeholder-color); }
-
-input[type=submit] { font-size: 12.5px; font-family: "Source Code Pro", monospace; line-height: 1.5; cursor: pointer; color: var(--link-color); background-color: var(--background-color); }
-
-input[type=submit]:hover { color: var(--background-color); background-color: var(--base-color); }
-
-*:focus { outline: none; }
-
-textarea { vertical-align: top; padding-left: 5px; }
+label, input, button { margin-bottom: 10px; /* Add space between each element */ }
 
 /** Code and syntax highlighting */
 .lineno { color: var(--code-color-1); margin-right: 15px; }
