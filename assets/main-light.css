@@ -7,9 +7,9 @@
 
 /** Style variables */
 /** Global */
-body { background-color: var(--background-color); margin: 0 auto; padding: 0; padding-top: 25px; padding-bottom: 25px; font-family: "Nunito", sans-serif; font-size: 12.5px; color: var(--text-color); text-align: left; line-height: 1.5 !important; }
+body { background-color: var(--background-color); margin: 0 auto; padding: 0; padding-top: 25px; padding-bottom: 25px; font-family: "Nunito", sans-serif; font-size: 14px; color: var(--text-color); text-align: left; line-height: 1.5 !important; }
 
-h1, h2, h3, h4, h5, h6 { font-size: 12.5px; margin: 0px; margin-top: 22px; font-weight: bold; color: var(--text-color); }
+h1, h2, h3, h4, h5, h6 { font-size: 14px; margin: 0px; margin-top: 22px; font-weight: bold; color: var(--text-color); }
 
 p, ul, ol { margin: 0px; color: var(--text-color); }
 
@@ -65,7 +65,7 @@ button { width: 30%; /* Adjust width to account for padding */ margin-bottom: 5p
 
 figure.highlight { margin: 5px 0; }
 
-pre { background-color: var(--background-color); border: none; padding: 0; margin: 0; overflow: auto; font-size: 12.5px; color: var(--text-color); line-height: 1.7 !important; font-family: "Nunito", sans-serif !important; }
+pre { background-color: var(--background-color); border: none; padding: 0; margin: 0; overflow: auto; font-size: 14px; color: var(--text-color); line-height: 1.7 !important; font-family: "Nunito", sans-serif !important; }
 
 .highlight .hll { background-color: var(--code-color-2); }
 
