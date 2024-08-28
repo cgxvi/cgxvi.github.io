@@ -245,6 +245,6 @@ pre { background-color: var(--background-color); border: none; padding: 0; margi
 
 .footer-container { display: flex; justify-content: space-between; align-items: center; }
 
-.footer-container span { flex: 1; }
+#datetime { flex-grow: 1; text-align: left; }
 
 .copyright { text-align: right; }
