@@ -239,3 +239,9 @@ pre { background-color: var(--background-color); border: none; padding: 0; margi
 /* Literal.Number.Integer.Long */
 /* To center images */
 .center { text-align: center; }
+
+.footer-container { display: flex; justify-content: space-between; align-items: center; }
+
+.footer-container span { flex: 1; }
+
+.copyright { text-align: right; }
