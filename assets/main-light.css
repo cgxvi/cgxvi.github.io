@@ -247,4 +247,4 @@ pre { background-color: var(--background-color); border: none; padding: 0; margi
 
 #datetime { flex-grow: 1; text-align: right; }
 
-.copyright { text-align: right; }
+.copyright { text-align: left; }
