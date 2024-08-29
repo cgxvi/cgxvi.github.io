@@ -243,8 +243,11 @@ pre { background-color: var(--background-color); border: none; padding: 0; margi
 /* To center images */
 .center { text-align: center; }
 
+/* To left-align images */
+.left { text-align: left; }
+
 .footer-container { display: flex; justify-content: space-between; align-items: center; }
 
-#datetime { flex-grow: 1; text-align: right; }
+#datetime { text-align: right; }
 
-.copyright { text-align: left; }
+.copyright { flex-grow: 1; text-align: left; }
