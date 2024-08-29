@@ -41,7 +41,7 @@ header p { text-align: left; margin: 5px; padding-left: 5px; }
 /** Header/Navigation */
 .menu { border-top: var(--border); border-bottom: var(--border); margin-bottom: 25px; padding-left: 0; padding-right: 0; }
 
-.menu ul { margin-top: 12px; margin-bottom: 12px; padding-left: 0px; padding-right: 5px; list-style-type: none; text-align: right; }
+.menu ul { margin-top: 6px; margin-bottom: 6px; padding-left: 0px; padding-right: 5px; list-style-type: none; text-align: right; }
 
 .menu ul li { display: inline; margin-left: 10px; }
 
