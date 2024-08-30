@@ -35,7 +35,7 @@ header p { text-align: left; margin: 5px; padding-left: 5px; }
 ::-moz-selection { background: var(--selection-background); color: var(--selection-text); }
 
 /** Lists */
-:not(.menu) > ul { list-style: none; padding-left: 5px; line-height: 2.5; }
+:not(.menu) > ul { list-style: none; padding-left: 5px; line-height: 2; }
 
 :not(.menu) > ul { list-style-type: none; }
 
