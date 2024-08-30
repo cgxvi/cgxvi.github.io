@@ -7,7 +7,7 @@
 
 /** Style variables */
 /** Global */
-body { background-color: var(--background-color); margin: 0 auto; padding: 0; padding-top: 25px; padding-bottom: 25px; font-family: "Source Serif 4", serif; font-size: 14px; color: var(--text-color); text-align: left; line-height: 1.5 !important; }
+body { background-color: var(--background-color); margin: 0 auto; padding: 0; padding-top: 25px; padding-bottom: 25px; font-family: "Source Serif 4", serif; font-size: 14px; font-wight: 200; color: var(--text-color); text-align: left; line-height: 1.5 !important; }
 
 h1, h2, h3, h4, h5, h6 { font-size: 14px; margin: 0px; margin-top: 22px; font-weight: bold; color: var(--text-color); }
 
