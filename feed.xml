@@ -1,28 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://gmcl.se/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gmcl.se/" rel="alternate" type="text/html" /><updated>2025-06-25T08:23:54+02:00</updated><id>https://gmcl.se/feed.xml</id><title type="html">GMCL</title><subtitle>GMCL.</subtitle><entry><title type="html">GEOEO - North of Greenland 2024</title><link href="https://gmcl.se/2024/08/07/GEOEO.html" rel="alternate" type="text/html" title="GEOEO - North of Greenland 2024" /><published>2024-08-07T12:00:00+02:00</published><updated>2024-08-07T12:00:00+02:00</updated><id>https://gmcl.se/2024/08/07/GEOEO</id><content type="html" xml:base="https://gmcl.se/2024/08/07/GEOEO.html"><![CDATA[<p><a href="https://gmcl.se/pages/"><em>Back to Pages</em></a></p>
-
-<p><strong>GEOEO - North of Greenland 2024</strong>
-In August–September 2024, the North of Greenland expedition with IB Oden went to Northern Greenland and the adjacent Arctic Ocean, including the Lincoln Sea. The expedition forms a part of the research theme <a href="https://www.polar.se/en/research-support/polar-research-process/theme-geoeo/">GEOEO (North Greenland Earth-Ocean-Ecosystem Observatory)</a>, which has been endorsed through the <a href="https://www.polar.se/en/research-support/polar-research-process/">Polar Research Process</a>.</p>
-
-<p>The North of Greenland 2024 expedition addresses scientific questions focused on providing new knowledge on the marine cryosphere’s dynamic history and response to future climate change, including implications for marine and terrestrial ecosystems in North Greenland and the adjacent Arctic Ocean and the North Greenland Ice Sheet’s contribution to global sea-level rise.</p>
-
-<p class="center"><img src="/assets/images/geoeo.jpg" alt="GEOEO" width="213.917" height="213.917" /></p>
-
-<p><strong>About the expedition</strong></p>
-
-<ul>
-  <li><a href="https://www.polar.se/en/expeditions/north-of-greenland-2024/" target="_blank">Swedish Polar Research Secretariat</a></li>
-  <li><a href="https://www.su.se/forskning/forskningsprojekt/geoeo-north-of-greenland-2024-expedition" target="_blank">Stockholm University</a></li>
-  <li><a href="https://sbd.arcticmarinesolutions.se/#token=8f4cf833adbeb96cde5a8eae84138c3a154522eb&amp;imei=300434066003000&amp;start=2023-05-07" target="_blank">IB Oden: Real-time position</a></li>
-  <li><a href="https://oden.geo.su.se/map/" target="_blank">IB Oden: Map with sea ice concentration (does not plot correctly in Firefox)</a></li>
-</ul>
-
-<p><br /></p>
-
-<div class="video-container">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4Az3gGGICMc?si=vTXzFEr8emFlRnQ_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-</div>
-
-<p>Film about the GEOEO – North of Greenland 2024 Expedition</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Back to Pages]]></summary></entry><entry><title type="html">DOI</title><link href="https://gmcl.se/2019/01/01/doi.html" rel="alternate" type="text/html" title="DOI" /><published>2019-01-01T01:00:01+01:00</published><updated>2019-01-01T01:00:01+01:00</updated><id>https://gmcl.se/2019/01/01/doi</id><content type="html" xml:base="https://gmcl.se/2019/01/01/doi.html"><![CDATA[<p><a href="https://gmcl.se/pages/"><em>Back to Pages</em></a></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://gmcl.se/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gmcl.se/" rel="alternate" type="text/html" /><updated>2025-08-07T14:15:45+02:00</updated><id>https://gmcl.se/feed.xml</id><title type="html">GMCL</title><subtitle>GMCL.</subtitle><entry><title type="html">DOI</title><link href="https://gmcl.se/2019/01/01/doi.html" rel="alternate" type="text/html" title="DOI" /><published>2019-01-01T01:00:01+01:00</published><updated>2019-01-01T01:00:01+01:00</updated><id>https://gmcl.se/2019/01/01/doi</id><content type="html" xml:base="https://gmcl.se/2019/01/01/doi.html"><![CDATA[<p><a href="https://gmcl.se/pages/"><em>Back to Pages</em></a></p>
 
 <form>
     <label for="userInput">Enter text (10.xxxx/yyyy/zzzz):</label>
