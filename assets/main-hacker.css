@@ -1,6 +1,30 @@
 /** Hacker theme variables */
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
-:root { --base-color: #00ff00; --border: dashed 1px rgba(0, 255, 0, 0.9); --selection-background: rgba(0, 255, 0, 0.99); --selection-text: #000; --background-color: #000; --text-color: var(--base-color); --placeholder-color: var(--base-color); --link-color: var(--base-color); --code-color-1: #aaaaaa; --code-color-2: #ffffcc; --code-color-3: #F00000; --code-color-4: #F0A0A0; --code-color-5: #b38aff; --code-color-6: #5ba711; --code-color-7: #e4e477; --code-color-8: #000080; --code-color-9: #05ca05; --code-color-10: #888888; --code-color-11: #555555; --code-color-12: #800080; --code-color-13: #00d4d4; --code-color-14: #00c1c1; --code-color-15: #ed9d13; --code-color-16: #1e90ff; --code-color-17: #800000; --code-color-18: #bbbbbb; }
+:root { --base-color: #00ff00; --border: dashed 1px rgba(0, 255, 0, 0.9); --selection-background: rgba(0, 255, 0, 0.99); --selection-text: #000; --background-color: #000; --text-color: var(--base-color); --placeholder-color: var(--base-color); --link-color: #ff7a00; --code-color-1: #aaaaaa; --code-color-2: #ffffcc; --code-color-3: #F00000; --code-color-4: #F0A0A0; --code-color-5: #b38aff; --code-color-6: #5ba711; --code-color-7: #e4e477; --code-color-8: #000080; --code-color-9: #05ca05; --code-color-10: #888888; --code-color-11: #555555; --code-color-12: #800080; --code-color-13: #00d4d4; --code-color-14: #00c1c1; --code-color-15: #ed9d13; --code-color-16: #1e90ff; --code-color-17: #800000; --code-color-18: #bbbbbb; }
+
+:root { --strong-color: #ff7a00; }
+
+/* pick your orange */
+strong, b { color: var(--strong-color); }
+
+/* Make the nav a single flex row */
+header .menu { width: 100%; }
+
+header .menu .nav { display: flex; align-items: center; gap: 1rem; /* spacing between links */ list-style: none; margin: 0; padding: 0; /* Make sure links stay left if the theme tried to center them */ justify-content: flex-start; }
+
+/* Push the toggle all the way to the right */
+header .menu .nav .nav-toggle { margin-left: auto; }
+
+/* Optional: compact the toggle look */
+.theme-toggle { display: inline-flex; align-items: center; gap: .25rem; padding: .25rem .5rem; white-space: nowrap; }
+
+.theme-toggle .sep { margin: 0; }
+
+/* Small screens: allow wrapping; keep toggle at the end */
+@media (max-width: 640px) { header .menu .nav { flex-wrap: wrap; }
+  header .menu .nav .nav-toggle { order: 99; /* stays at the end when wrapping */ margin-left: auto; } }
+/* (Optional) If your theme *forces* centering somewhere, this wins without !important */
+header .menu .nav, header .menu .nav *:where(a, li) { text-align: left; }
 
 /** Style variables */
 /** Global */

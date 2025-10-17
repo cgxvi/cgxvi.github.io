@@ -17,27 +17,54 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Home" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"GMCL.","headline":"Home","name":"GMCL","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://gmcl.se/assets/images/ionic_interactions_bw.jpg"}},"url":"https://gmcl.se/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","description":"GMCL.","headline":"Home","name":"GMCL","url":"https://gmcl.se/"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" type="text/css" href="/assets/main-light.css"><link rel="stylesheet" href="/assets/css/video-embed.css">
+
+<!--<link rel="stylesheet" type="text/css" href="/assets/main-dark.css">-->
+	<link rel="stylesheet" href="/assets/css/video-embed.css">
+
+	<!-- Single theme stylesheet we will swap via JS -->
+	<link
+    id="theme-css"
+    rel="stylesheet"
+    href="/assets/main-light.css"
+    data-href-light="/assets/main-light.css"
+    data-href-hacker="/assets/main-hacker.css"
+	>
+	<link rel="stylesheet" href="/assets/css/custom.css">
+
 
 </head>
 <body>
     <div class="container"><header>
-<img class="logo" src="/assets/images/gmcl_logo.jpg" width="360" height="138" />
-  <br>
+  <img
+    id="site-logo"
+    class="logo"
+    alt="GMCL"
+    src="/assets/images/gmcl_logo.jpg"
+    data-src-light="/assets/images/gmcl_logo.jpg"
+    data-src-hacker="/assets/images/gmcl_logo_bg.jpg"
+    width="360"
+    height="138"
+  />
   <div class="menu">
-    <ul><li><a href="/">Home</a></li><li><a href="/publications/">Publications</a></li><li><a href="/pages/">Pages</a></li><li><a href="/about/">About</a></li></ul>
+    <ul class="nav"><li><a href="/">Home</a></li><li><a href="/publications/">Publications</a></li><li><a href="/pages/">Pages</a></li><li><a href="/about/">About</a></li><!-- Toggle button in same row, pushed to the right -->
+      <li class="nav-toggle">
+  <button id="theme-toggle" type="button" class="theme-toggle" aria-pressed="false" title="Toggle theme">
+    <span class="label-light">Light</span>
+    <span class="sep" aria-hidden="true">|</span>
+    <span class="label-dark">Dark</span>
+  </button>
+</li>
+
+
+    </ul>
   </div>
-  
 </header>
-
-
 <main>
-      <p class="center"><img src="/assets/images/ionic_interactions_bw.jpg" alt="Ionic interactions" width="360" height="337" /></p>
+      <p class="center"><img src="/assets/images/ionic_interactions_bw.jpg" alt="Ionic interactions" id="home-hero" data-src-light="/assets/images/ionic_interactions_bw.jpg" data-src-hacker="/assets/images/ionic_interactions.jpg" width="360" height="337" /></p>
 
 <p class="left">Schematic diagram of ionic interactions in seawater. After <a href="http://refhub.elsevier.com/S0304-4203(15)00025-0/rf9000" target="_blank">Dyrssen &amp; Wedborg (1974)</a>.</p>
-
 
     </main><footer>
   <div class="footer-container">
@@ -45,9 +72,14 @@
 	<span id="datetime"></span>
   </div>
 <script src="/assets/scripts/script_time.js"></script>
+<script src="/assets/scripts/theme.js" defer></script>
+
 </footer>
 
 
 </div>
-  </body>
+
+</body>
 </html>
+
+  

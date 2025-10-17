@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/* Compact pill */
+.theme-toggle { /* display: inline-flex;*/ align-items: center; gap: .1rem; /* was .35rem */ font-size: .8rem; /* was .9rem */ line-height: 1; padding: .1rem .1rem !important; /* was .25rem .6rem */ background: transparent; border: 0px solid currentColor; border-radius: 50px; color: inherit; opacity: .95; cursor: pointer; transition: opacity .15s ease, border-color .15s ease, background-color .15s ease; }
+
+.theme-toggle .sep { margin: 0; }
+
+/* kill extra space around the “/” */
+/* Keep the active/inactive emphasis */
+.theme-toggle .label-light, .theme-toggle .label-dark { transition: opacity .15s ease, filter .15s ease; }
+
+.theme-light .theme-toggle .label-light { opacity: 1; }
+
+.theme-light .theme-toggle .label-dark { opacity: .55; filter: saturate(0.7); }
+
+.theme-hacker .theme-toggle .label-light { opacity: .55; filter: saturate(0.7); }
+
+.theme-hacker .theme-toggle .label-dark { opacity: 1; }

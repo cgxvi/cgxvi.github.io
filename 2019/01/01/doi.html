@@ -18,22 +18,50 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="DOI" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-01-01T01:00:01+01:00","datePublished":"2019-01-01T01:00:01+01:00","description":"Back to Pages","headline":"DOI","mainEntityOfPage":{"@type":"WebPage","@id":"https://gmcl.se/2019/01/01/doi.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://gmcl.se/assets/images/ionic_interactions_bw.jpg"}},"url":"https://gmcl.se/2019/01/01/doi.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2019-01-01T01:00:01+01:00","datePublished":"2019-01-01T01:00:01+01:00","description":"Back to Pages","headline":"DOI","mainEntityOfPage":{"@type":"WebPage","@id":"https://gmcl.se/2019/01/01/doi.html"},"url":"https://gmcl.se/2019/01/01/doi.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" type="text/css" href="/assets/main-light.css"><link rel="stylesheet" href="/assets/css/video-embed.css">
+
+<!--<link rel="stylesheet" type="text/css" href="/assets/main-dark.css">-->
+	<link rel="stylesheet" href="/assets/css/video-embed.css">
+
+	<!-- Single theme stylesheet we will swap via JS -->
+	<link
+    id="theme-css"
+    rel="stylesheet"
+    href="/assets/main-light.css"
+    data-href-light="/assets/main-light.css"
+    data-href-hacker="/assets/main-hacker.css"
+	>
+	<link rel="stylesheet" href="/assets/css/custom.css">
+
 
 </head>
 <body>
     <div class="container"><header>
-<img class="logo" src="/assets/images/gmcl_logo.jpg" width="360" height="138" />
-  <br>
+  <img
+    id="site-logo"
+    class="logo"
+    alt="GMCL"
+    src="/assets/images/gmcl_logo.jpg"
+    data-src-light="/assets/images/gmcl_logo.jpg"
+    data-src-hacker="/assets/images/gmcl_logo_bg.jpg"
+    width="360"
+    height="138"
+  />
   <div class="menu">
-    <ul><li><a href="/">Home</a></li><li><a href="/publications/">Publications</a></li><li><a href="/pages/">Pages</a></li><li><a href="/about/">About</a></li></ul>
+    <ul class="nav"><li><a href="/">Home</a></li><li><a href="/publications/">Publications</a></li><li><a href="/pages/">Pages</a></li><li><a href="/about/">About</a></li><!-- Toggle button in same row, pushed to the right -->
+      <li class="nav-toggle">
+  <button id="theme-toggle" type="button" class="theme-toggle" aria-pressed="false" title="Toggle theme">
+    <span class="label-light">Light</span>
+    <span class="sep" aria-hidden="true">|</span>
+    <span class="label-dark">Dark</span>
+  </button>
+</li>
+
+
+    </ul>
   </div>
-  
 </header>
-
-
 <main>
       <p><a href="https://gmcl.se/pages/"><em>Back to Pages</em></a></p>
 
@@ -57,9 +85,14 @@
 	<span id="datetime"></span>
   </div>
 <script src="/assets/scripts/script_time.js"></script>
+<script src="/assets/scripts/theme.js" defer></script>
+
 </footer>
 
 
 </div>
-  </body>
+
+</body>
 </html>
+
+  
