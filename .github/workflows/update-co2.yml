@@ -1,31 +1,41 @@
-name: Update CO₂ data
+name: Update CO₂ data (assets/co2.json)
 
 on:
   schedule:
     - cron: "0 6 * * *"   # daily at 06:00 UTC
-  workflow_dispatch: {}    # allow manual runs
+  workflow_dispatch: {}    # allow manual runs from the Actions tab
 
 permissions:
-  contents: write
+  contents: write          # allow committing changes back to the repo
 
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           persist-credentials: true
+          fetch-depth: 0
 
       - name: Fetch NOAA daily file
         run: |
+          set -euo pipefail
           curl -sS https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_daily_mlo.txt -o co2_daily_mlo.txt
+          test -s co2_daily_mlo.txt || (echo "Download failed/empty" && exit 1)
 
-      - name: Parse latest value and update date
-        id: parse
+      - name: Parse latest daily ppm + last update date
         shell: bash
         run: |
+          set -euo pipefail
+
+          # Find the last valid numeric daily mean line (ignores comments)
           LATEST_LINE=$(awk '!/^#/ && $4+0>200 && $4+0<700 { last=$0 } END { print last }' co2_daily_mlo.txt)
+          if [ -z "$LATEST_LINE" ]; then
+            echo "Could not find a valid data line" >&2
+            exit 1
+          fi
+
           Y=$(echo "$LATEST_LINE" | awk '{print $1}')
           M=$(printf "%02d" $(echo "$LATEST_LINE" | awk '{print $2}'))
           D=$(printf "%02d" $(echo "$LATEST_LINE" | awk '{print $3}'))
@@ -33,26 +43,37 @@ jobs:
           PPM=$(awk -v v="$VAL" 'BEGIN { printf "%.2f", v }')
           ROW_DATE="$Y-$M-$D"
 
-          HEADER=$(grep -m1 -i 'File Creation:' co2_daily_mlo.txt | sed 's/.*File Creation:\s*//I')
+          # Header "File Creation:" -> YYYY-MM-DD (fallback to row date)
+          HEADER=$(grep -m1 -i 'File Creation:' co2_daily_mlo.txt | sed 's/.*File Creation:\s*//I' || true)
           if date -u -d "$HEADER" +%Y-%m-%d >/dev/null 2>&1; then
             UPDATED=$(date -u -d "$HEADER" +%Y-%m-%d)
           else
             UPDATED="$ROW_DATE"
           fi
 
-          mkdir -p _data
-          cat > _data/co2.json <<JSON
+          echo "Parsed: ppm=$PPM, row_date=$ROW_DATE, last_updated=$UPDATED"
+
+          mkdir -p assets
+          cat > assets/co2.json <<JSON
           { "ppm": "$PPM", "date": "$ROW_DATE", "last_updated": "$UPDATED" }
           JSON
 
-      - name: Commit if changed
+          echo "Workspace tree:"
+          ls -la
+          echo "assets/:"
+          ls -la assets
+
+      - name: Commit assets/co2.json if changed
+        shell: bash
         run: |
-          if git diff --quiet _data/co2.json; then
-            echo "No changes"
-            exit 0
+          set -euo pipefail
+          if git status --porcelain assets/co2.json | grep .; then
+            git config user.name "co2-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add assets/co2.json
+            git commit -m "Update CO₂ data (ppm/date/last_updated)"
+            git push
+            echo "Committed and pushed assets/co2.json"
+          else
+            echo "No changes to commit."
           fi
-          git config user.name "co2-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add _data/co2.json
-          git commit -m "Update CO₂: $(jq -r .ppm _data/co2.json) ppm ($(jq -r .last_updated _data/co2.json))" || git commit -m "Update CO₂ data"
-          git push
