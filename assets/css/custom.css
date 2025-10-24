@@ -16,30 +16,12 @@
 
 .theme-hacker .theme-toggle .label-dark { opacity: 1; }
 
-/* two-row footer layout */
-.footer-container { display: grid; gap: .35rem; /* space between rows */ padding: .5rem 0; font-size: .95rem; }
+/* Ensure our layout wins over theme defaults */
+footer .footer-container { display: block; /* a simple block that contains two rows */ padding: .5rem 0; font-size: .95rem; }
 
-/* row 1: left + right */
-.footer-row-top { display: flex; align-items: center; }
+/* Row 1: two ends (left / right) */
+footer .footer-row-top { display: flex; align-items: center; }
 
-.footer-left { margin-right: auto; }
+footer .footer-row-top .footer-left { margin-right: auto; }
 
-.footer-right { margin-left: auto; opacity: .9; }
-
-/* row 2: inline, center-aligned, stays on one line if room */
-.footer-row-bottom { display: inline-flex; justify-content: center; align-items: baseline; gap: .5rem; flex-wrap: wrap; /* wrap nicely on small screens */ text-align: center; opacity: .95; }
-
-.footer-sep { opacity: .6; }
-
-.footer-source { opacity: .9; }
-
-/* make the link inherit theme color and underline on hover */
-.footer-source a { color: inherit; text-decoration: none; border-bottom: 1px dotted currentColor; }
-
-.footer-source a:hover { text-decoration: underline; }
-
-/* shrink the second row slightly for hierarchy */
-.footer-row-bottom { font-size: .9rem; }
-
-/* optional: on very narrow screens, tighten spacing */
-@media (max-width: 420px) { .footer-row-bottom { gap: .35rem; } }
+footer .footer-row-top .footer-right { margin-left: auto; opacity: .9; }

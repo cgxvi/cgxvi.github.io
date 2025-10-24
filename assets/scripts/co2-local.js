@@ -8,7 +8,7 @@
     .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
     .then(function (j) {
       if (!j || !j.ppm || !j.last_updated) throw new Error('bad json');
-      out.textContent = 'CO₂ today: ' + j.ppm + ' ppm (last update ' + j.last_updated + ')';
+      out.textContent = 'CO₂: ' + j.ppm + ' ppm (last update ' + j.last_updated + ')';
       out.title = 'NOAA GML daily mean for ' + (j.date || j.last_updated);
     })
     .catch(function () {
