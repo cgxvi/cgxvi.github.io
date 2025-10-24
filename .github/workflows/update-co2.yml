@@ -1,0 +1,60 @@
+name: Update CO₂ data
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # daily at 06:00 UTC
+  workflow_dispatch: {}    # allow manual runs
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Fetch NOAA daily file
+        run: |
+          curl -sS https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_daily_mlo.txt -o co2_daily_mlo.txt
+
+      - name: Parse latest value and update date
+        id: parse
+        shell: bash
+        run: |
+          LATEST_LINE=$(awk '!/^#/ && $4+0>200 && $4+0<700 { last=$0 } END { print last }' co2_daily_mlo.txt)
+          Y=$(echo "$LATEST_LINE" | awk '{print $1}')
+          M=$(printf "%02d" $(echo "$LATEST_LINE" | awk '{print $2}'))
+          D=$(printf "%02d" $(echo "$LATEST_LINE" | awk '{print $3}'))
+          VAL=$(echo "$LATEST_LINE" | awk '{print $4}')
+          PPM=$(awk -v v="$VAL" 'BEGIN { printf "%.2f", v }')
+          ROW_DATE="$Y-$M-$D"
+
+          HEADER=$(grep -m1 -i 'File Creation:' co2_daily_mlo.txt | sed 's/.*File Creation:\s*//I')
+          if date -u -d "$HEADER" +%Y-%m-%d >/dev/null 2>&1; then
+            UPDATED=$(date -u -d "$HEADER" +%Y-%m-%d)
+          else
+            UPDATED="$ROW_DATE"
+          fi
+
+          mkdir -p _data
+          cat > _data/co2.json <<JSON
+          { "ppm": "$PPM", "date": "$ROW_DATE", "last_updated": "$UPDATED" }
+          JSON
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet _data/co2.json; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name "co2-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add _data/co2.json
+          git commit -m "Update CO₂: $(jq -r .ppm _data/co2.json) ppm ($(jq -r .last_updated _data/co2.json))" || git commit -m "Update CO₂ data"
+          git push
+
+Add daily CO₂ updater
