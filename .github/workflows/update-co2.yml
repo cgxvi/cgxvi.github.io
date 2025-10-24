@@ -56,5 +56,3 @@ jobs:
           git add _data/co2.json
           git commit -m "Update CO₂: $(jq -r .ppm _data/co2.json) ppm ($(jq -r .last_updated _data/co2.json))" || git commit -m "Update CO₂ data"
           git push
-
-Add daily CO₂ updater
