@@ -16,12 +16,19 @@
 
 .theme-hacker .theme-toggle .label-dark { opacity: 1; }
 
-/* Ensure our layout wins over theme defaults */
-footer .footer-container { display: block; /* a simple block that contains two rows */ padding: .5rem 0; font-size: .95rem; }
+/* Force the footer into two distinct rows */
+footer .footer-container { display: block !important; /* ensure rows stack */ }
 
-/* Row 1: two ends (left / right) */
-footer .footer-row-top { display: flex; align-items: center; }
+/* Each row = a full-width flex line */
+footer .footer-row-top, footer .footer-row-bottom { display: flex !important; align-items: center; width: 100%; }
 
-footer .footer-row-top .footer-left { margin-right: auto; }
+/* Space between rows */
+footer .footer-row-bottom { margin-top: .35rem; }
 
-footer .footer-row-top .footer-right { margin-left: auto; opacity: .9; }
+/* Left/right alignment within each row */
+footer .footer-left { margin-right: auto; text-align: left; }
+
+footer .footer-right { margin-left: auto; text-align: right; }
+
+/* Make all footer text small (keep your value) */
+footer .footer-container { font-size: 0.85rem !important; }
