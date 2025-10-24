@@ -3,7 +3,7 @@ name: Update CO₂ data (assets/co2.json)
 on:
   schedule:
     - cron: "0 6 * * *"   # daily at 06:00 UTC
-  workflow_dispatch: {}    # manual runs
+  workflow_dispatch: {}    # allow manual runs
 
 permissions:
   contents: write
@@ -24,42 +24,46 @@ jobs:
           curl -sS https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_daily_mlo.txt -o co2_daily_mlo.txt
           test -s co2_daily_mlo.txt || (echo "Download failed/empty" && exit 1)
 
-      - name: Parse latest daily ppm + last update date (robust)
+      - name: Parse latest daily ppm + last update date (no tac)
         shell: bash
         run: |
           set -euo pipefail
 
-          # Find the last non-comment data line whose last field looks like a real ppm
-          # (skip -999.99 and obvious non-numbers). We read from the bottom with tac.
-          LATEST_LINE=$(tac co2_daily_mlo.txt | awk '
-            BEGIN { OFS=" " }
-            /^[[:space:]]*#/ { next }     # skip comments
-            NF==0 { next }                # skip blank
+          # Walk the file once, track the last valid numeric row.
+          # Date = first 3 fields; PPM = last field (skip -999.99 / out-of-range).
+          LATEST_LINE=$(awk '
+            /^[[:space:]]*#/ { next }        # skip comments
+            NF == 0        { next }          # skip blank lines
             {
               v = $NF
-              # Valid ppm roughly between 200 and 700; skip -999.99 or non-numeric
-              if (v ~ /^-?[0-9]*\.?[0-9]+$/ && v+0 > 200 && v+0 < 700) { print; exit }
+              if (v ~ /^-?[0-9]*\.?[0-9]+$/ && v+0 > 200 && v+0 < 700) {
+                last=$0; lasty=$1; lastm=$2; lastd=$3; lastv=v
+              }
             }
-          ')
-          if [ -z "$LATEST_LINE" ]; then
+            END {
+              if (lastv != "") {
+                printf "%s %s %s %s\n", lasty, lastm, lastd, lastv
+              }
+            }
+          ' co2_daily_mlo.txt)
+
+          if [ -z "${LATEST_LINE}" ]; then
             echo "Could not find a valid data line" >&2
-            tail -n 20 co2_daily_mlo.txt || true
+            tail -n 40 co2_daily_mlo.txt || true
             exit 1
           fi
 
-          # Extract date from the first three fields; ppm from last field
           Y=$(echo "$LATEST_LINE" | awk '{print $1}')
           M=$(echo "$LATEST_LINE" | awk '{print $2}')
           D=$(echo "$LATEST_LINE" | awk '{print $3}')
-          VAL=$(echo "$LATEST_LINE" | awk '{print $NF}')
+          VAL=$(echo "$LATEST_LINE" | awk '{print $4}')
 
-          # Zero-pad month/day; format ppm to 2 decimals
           M=$(printf "%02d" "$M")
           D=$(printf "%02d" "$D")
           ROW_DATE="$Y-$M-$D"
           PPM=$(awk -v v="$VAL" 'BEGIN { printf "%.2f", v }')
 
-          # Header "File Creation:" -> YYYY-MM-DD (fallback to row date)
+          # Parse "File Creation:" header to YYYY-MM-DD; fallback to row date
           HEADER=$(grep -m1 -i 'File Creation:' co2_daily_mlo.txt | sed 's/.*File Creation:\s*//I' || true)
           if date -u -d "$HEADER" +%Y-%m-%d >/dev/null 2>&1; then
             UPDATED=$(date -u -d "$HEADER" +%Y-%m-%d)
@@ -67,7 +71,6 @@ jobs:
             UPDATED="$ROW_DATE"
           fi
 
-          echo "Parsed: line='$LATEST_LINE'"
           echo "Parsed: ppm=$PPM, row_date=$ROW_DATE, last_updated=$UPDATED"
 
           mkdir -p assets
