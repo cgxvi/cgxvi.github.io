@@ -8,7 +8,7 @@
     .then(j => {
       if (!j || !j.ppm || !j.last_updated) throw new Error('bad json');
       out.innerHTML =
-        'CO₂: <strong>' + j.ppm + ' ppm</strong> (last update ' + j.last_updated + ')';
+        'CO₂: <strong>' + j.ppm + ' ppm</strong> (' + j.last_updated + ')';
       out.title = 'NOAA GML daily mean for ' + (j.date || j.last_updated);
     })
     .catch(() => {
