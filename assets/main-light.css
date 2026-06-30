@@ -1,5 +1,5 @@
 /** Light theme variables */
-@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 :root { --base-color: #000; --border: solid 1px rgba(0, 0, 0, 1); --selection-background: rgba(0, 0, 0, 0.99); --selection-text: #FFF; --background-color: #FFF; --extra-background-color: #FFF; --text-color: var(--base-color); --placeholder-color: #f0f0f0; --link-color: var(--base-color); --code-color-1: #aaaaaa; --code-color-2: #ffffcc; --code-color-3: #F00000; --code-color-4: #F0A0A0; --code-color-5: #0000aa; --code-color-6: #4c8317; --code-color-7: #aa0000; --code-color-8: #000080; --code-color-9: #00aa00; --code-color-10: #888888; --code-color-11: #555555; --code-color-12: #800080; --code-color-13: #00aaaa; --code-color-14: #009999; --code-color-15: #aa5500; --code-color-16: #1e90ff; --code-color-17: #800000; --code-color-18: #bbbbbb; }
 
 /* To center images */
@@ -26,7 +26,7 @@ header .menu .nav, header .menu .nav *:where(a, li) { text-align: left; }
 
 /** Style variables */
 /** Global */
-body { background-color: var(--background-color); margin: 0 auto; padding: 0; padding-top: 25px; padding-bottom: 25px; font-family: "Source Serif 4", serif; font-size: 13px; color: var(--text-color); text-align: left; line-height: 1.5 !important; }
+body { background-color: var(--background-color); margin: 0 auto; padding: 0; padding-top: 25px; padding-bottom: 25px; font-family: "IBM Plex Mono", "Courier New", monospace; font-size: 13px; color: var(--text-color); text-align: left; line-height: 1.6 !important; }
 
 h1, h2, h3, h4, h5, h6 { font-size: 13px; margin: 0px; margin-top: 22px; font-weight: bold; color: var(--text-color); }
 
@@ -36,9 +36,9 @@ a { text-decoration: underline; color: var(--link-color); }
 
 a:hover { color: var(--background-color); background-color: var(--base-color); }
 
-@media only screen and (max-device-width: 500px) { * { font-size: 12px !important; } }
+@media only screen and (max-device-width: 500px) { * { font-size: 13px !important; } }
 /** Layout */
-.container { background-color: var(--extra-background-color); width: 90%; max-width: 600px; margin-right: auto; margin-left: auto; border: none; }
+.container { background-color: var(--extra-background-color); width: 92%; max-width: 680px; margin-right: auto; margin-left: auto; border: none; }
 
 p { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; margin-bottom: 10px; padding-left: 5px; padding-right: 5px; }
 
@@ -84,7 +84,7 @@ button { width: 30%; /* Adjust width to account for padding */ margin-bottom: 5p
 
 figure.highlight { margin: 5px 0; }
 
-pre { background-color: var(--background-color); border: none; padding: 0; margin: 0; overflow: auto; font-size: 13px; color: var(--text-color); line-height: 1.7 !important; font-family: "Source Serif 4", serif !important; }
+pre { background-color: var(--background-color); border: none; padding: 0; margin: 0; overflow: auto; font-size: 13px; color: var(--text-color); line-height: 1.7 !important; font-family: "IBM Plex Mono", "Courier New", monospace !important; }
 
 .highlight .hll { background-color: var(--code-color-2); }
 
