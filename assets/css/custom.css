@@ -42,17 +42,24 @@ footer .footer-container { font-size: 0.85rem !important; }
 
 .co2-plot svg { display: block; width: 100%; height: auto; overflow: visible; background: transparent; }
 
-.co2-line { fill: none; stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.co2-line { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
 
 .co2-axis, .co2-tick { stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
 
 .co2-grid { stroke: currentColor; stroke-width: 1; opacity: .12; vector-effect: non-scaling-stroke; }
 
-.co2-axis-label, .co2-y-title { fill: currentColor; font-family: inherit; font-size: 24px; font-weight: inherit; }
+/* X- and Y-axis tick labels */
+.co2-axis-label { fill: currentColor; font-family: inherit; font-size: 20px; font-weight: inherit; }
+
+/* Y-axis title: CO₂ (ppm) */
+.co2-y-title { fill: currentColor; font-family: inherit; font-size: 28px; font-weight: inherit; }
 
 .co2-latest { fill: #ffa34b; stroke: #ffa34b; }
 
 .co2-plot-error { font-size: .85rem; opacity: .7; }
 
 @media (max-width: 600px) { .co2-figure { margin-bottom: .75rem; }
-  .co2-axis-label, .co2-y-title { font-size: 28px; } }
+  /* Tick labels: 300, 320, 1960, 1980, etc. */
+  .co2-axis-label { font-size: 42px; }
+  /* Y-axis title: CO₂ (ppm) */
+  .co2-y-title { font-size: 48px; } }
