@@ -248,22 +248,24 @@
   </figure>
 
   <div class="footer-container">
-    <!-- Row 1 -->
-    <div class="footer-row-top">
-      <span class="footer-left">© GMCL</span>
-      <span class="footer-right" id="datetime"></span>
-    </div>
 
-    <!-- Row 2 -->
-    <div class="footer-row-bottom">
-      <span class="footer-left" id="co2-now">CO₂: loading…</span>
-      <span class="footer-right">
-        <span class="footer-source">
-          Data: <a href="https://gml.noaa.gov/ccgg/trends/">NOAA GML CO₂ trends</a>
-        </span>
+  <!-- Row 1: CO2 data + source -->
+  <div class="footer-row-bottom">
+    <span class="footer-left" id="co2-now">CO₂: loading…</span>
+    <span class="footer-right">
+      <span class="footer-source">
+        Data: <a href="https://gml.noaa.gov/ccgg/trends/">NOAA GML CO₂ trends</a>
       </span>
-    </div>
+    </span>
   </div>
+
+  <!-- Row 2: copyright + time -->
+  <div class="footer-row-top">
+    <span class="footer-left">© GMCL</span>
+    <span class="footer-right" id="datetime"></span>
+  </div>
+
+	</div>
 
   <!-- scripts -->
   <script src="/assets/scripts/script_time.js"></script>
