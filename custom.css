@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/* Compact pill */
+.theme-toggle { /* display: inline-flex;*/ align-items: center; gap: .1rem; /* was .35rem */ font-size: .8rem; /* was .9rem */ line-height: 1; padding: .1rem .1rem !important; /* was .25rem .6rem */ background: transparent; border: 0px solid currentColor; border-radius: 50px; color: inherit; opacity: .95; cursor: pointer; transition: opacity .15s ease, border-color .15s ease, background-color .15s ease; }
+
+.theme-toggle .sep { margin: 0; }
+
+/* kill extra space around the “/” */
+/* Keep the active/inactive emphasis */
+.theme-toggle .label-light, .theme-toggle .label-dark { transition: opacity .15s ease, filter .15s ease; }
+
+.theme-light .theme-toggle .label-light { opacity: 1; }
+
+.theme-light .theme-toggle .label-dark { opacity: .55; filter: saturate(0.7); }
+
+.theme-hacker .theme-toggle .label-light { opacity: .55; filter: saturate(0.7); }
+
+.theme-hacker .theme-toggle .label-dark { opacity: 1; }
+
+/* Force the footer into two distinct rows */
+footer .footer-container { display: block !important; /* ensure rows stack */ }
+
+/* Each row = a full-width flex line */
+footer .footer-row-top, footer .footer-row-bottom { display: flex !important; align-items: center; width: 100%; }
+
+/* Space between rows */
+footer .footer-row-bottom { margin-top: .35rem; }
+
+/* Left/right alignment within each row */
+footer .footer-left { margin-right: auto; text-align: left; }
+
+footer .footer-right { margin-left: auto; text-align: right; }
+
+/* Make all footer text small (keep your value) */
+footer .footer-container { font-size: 0.85rem !important; }
+
+/* Atmospheric CO2 history plot */
+.co2-figure { margin: 0 0 1rem 0; padding: 0; color: inherit; }
+
+.co2-figure figcaption { margin: 0 0 .35rem 0; font-size: .85rem; font-weight: normal; text-align: left; color: inherit; }
+
+.co2-plot { width: 100%; background: transparent; color: inherit; }
+
+.co2-plot svg { display: block; width: 100%; height: auto; overflow: visible; background: transparent; }
+
+.co2-line { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.co2-axis, .co2-tick { stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.co2-grid { stroke: currentColor; stroke-width: 1; opacity: .12; vector-effect: non-scaling-stroke; }
+
+.co2-axis-label, .co2-y-title { fill: currentColor; font-family: inherit; font-size: 24px; font-weight: inherit; }
+
+.co2-latest { fill: #ffa34b; stroke: #ffa34b; }
+
+.co2-plot-error { font-size: .85rem; opacity: .7; }
+
+@media (max-width: 600px) { .co2-figure { margin-bottom: .75rem; }
+  .co2-axis-label, .co2-y-title { font-size: 42px; } }
