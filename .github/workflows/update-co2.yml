@@ -1,4 +1,4 @@
-name: Update CO₂ data (assets/co2.json)
+name: Update CO₂ data and history
 
 on:
   schedule:
@@ -18,11 +18,13 @@ jobs:
           persist-credentials: true
           fetch-depth: 0
 
-      - name: Fetch NOAA daily file
+      - name: Fetch NOAA daily and monthly files
         run: |
           set -euo pipefail
           curl -sS https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_daily_mlo.txt -o co2_daily_mlo.txt
-          test -s co2_daily_mlo.txt || (echo "Download failed/empty" && exit 1)
+          curl -sS https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.txt -o co2_mm_mlo.txt
+          test -s co2_daily_mlo.txt || (echo "Daily download failed/empty" && exit 1)
+          test -s co2_mm_mlo.txt || (echo "Monthly download failed/empty" && exit 1)
 
       - name: Parse latest daily ppm + last update date (no tac)
         shell: bash
@@ -78,20 +80,39 @@ jobs:
           { "ppm": "$PPM", "date": "$ROW_DATE", "last_updated": "$UPDATED" }
           JSON
 
+          # Build compact monthly history for the browser-side SVG plot.
+          awk '
+            BEGIN { print "["; first=1 }
+            /^[[:space:]]*#/ { next }
+            NF == 0 { next }
+            {
+              y=$1; m=$2; v=$4
+              if (y ~ /^[0-9][0-9][0-9][0-9]$/ && m+0 >= 1 && m+0 <= 12 &&
+                  v ~ /^-?[0-9]*\.?[0-9]+$/ && v+0 > 200 && v+0 < 700) {
+                if (!first) printf ",\n"
+                printf "  {\"date\":\"%04d-%02d\",\"ppm\":%.2f}", y, m, v
+                first=0
+              }
+            }
+            END { print "\n]" }
+          ' co2_mm_mlo.txt > assets/co2-history.json
+
+          test -s assets/co2-history.json || (echo "History JSON is empty" && exit 1)
+
           echo "assets/:"
           ls -la assets
 
-      - name: Commit assets/co2.json if changed
+      - name: Commit CO₂ assets if changed
         shell: bash
         run: |
           set -euo pipefail
-          if git status --porcelain assets/co2.json | grep .; then
+          if git status --porcelain assets/co2.json assets/co2-history.json | grep .; then
             git config user.name "co2-bot"
             git config user.email "actions@users.noreply.github.com"
-            git add assets/co2.json
+            git add assets/co2.json assets/co2-history.json
             git commit -m "Update CO₂ data"
             git push
-            echo "Committed and pushed assets/co2.json"
+            echo "Committed and pushed CO₂ assets"
           else
             echo "No changes to commit."
           fi
