@@ -37,7 +37,7 @@
     if (data.length < 2) throw new Error('no valid history');
 
     var W = 1000, H = 300;
-    var M = { top: 14, right: 18, bottom: 38, left: 58 };
+    var M = { top: 14, right: 18, bottom: 38, left: 82 };
     var innerW = W - M.left - M.right, innerH = H - M.top - M.bottom;
     var minX = data[0].x, maxX = data[data.length - 1].x;
     var values = data.map(function (d) { return d.ppm; });
@@ -74,7 +74,7 @@
     svg.push('<path class="co2-line" d="' + path + '"></path>');
     var latest = data[data.length - 1];
     svg.push('<circle class="co2-latest" cx="' + sx(latest.x) + '" cy="' + sy(latest.ppm) + '" r="3.5"></circle>');
-    svg.push('<text class="co2-y-title" x="14" y="' + (M.top + innerH / 2) + '" text-anchor="middle" transform="rotate(-90 14 ' + (M.top + innerH / 2) + ')">CO₂ (ppm)</text>');
+    svg.push('<text class="co2-y-title" x="18" y="' + (M.top + innerH / 2) + '" text-anchor="middle" transform="rotate(-90 18 ' + (M.top + innerH / 2) + ')">CO₂ (ppm)</text>');
     svg.push('</svg>');
     plot.innerHTML = svg.join('');
   }
