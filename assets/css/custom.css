@@ -36,7 +36,7 @@ footer .footer-container { font-size: 0.85rem !important; }
 /* Atmospheric CO2 history plot */
 .co2-figure { margin: 0 0 1rem 0; padding: 0; color: inherit; }
 
-.co2-figure figcaption { margin: 0 0 .35rem 0; font-size: .85rem; font-weight: normal; text-align: left; color: inherit; }
+.co2-figure figcaption { margin: 0 0 .35rem 0; font-size: .85rem; font-weight: normal; text-align: center; color: inherit; }
 
 .co2-plot { width: 100%; background: transparent; color: inherit; }
 
@@ -52,7 +52,7 @@ footer .footer-container { font-size: 0.85rem !important; }
 .co2-axis-label { fill: currentColor; font-family: inherit; font-size: 20px; font-weight: inherit; }
 
 /* Y-axis title: CO₂ (ppm) */
-.co2-y-title { fill: currentColor; font-family: inherit; font-size: 28px; font-weight: inherit; }
+.co2-y-title { fill: currentColor; font-family: inherit; font-size: 24px; font-weight: inherit; }
 
 .co2-latest { fill: #ffa34b; stroke: #ffa34b; }
 
