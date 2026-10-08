@@ -16,31 +16,40 @@
 
   if (!plot) return;
 
-  fetch('/assets/co2-history.json', { cache: 'no-cache' })
-    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-    .then(function (rows) {
-      if (!Array.isArray(rows) || rows.length < 2) throw new Error('bad history');
-      drawPlot(rows);
+  Promise.all([
+    fetch('/assets/co2-history.json', { cache: 'no-cache' }).then(function (r) {
+      return r.ok ? r.json() : Promise.reject(new Error('Mauna Loa history unavailable'));
+    }),
+    fetch('/assets/co2-global.json', { cache: 'no-cache' }).then(function (r) {
+      return r.ok ? r.json() : Promise.reject(new Error('Global history unavailable'));
+    })
+  ])
+    .then(function (sets) {
+      drawPlot(sets[0], sets[1]);
     })
     .catch(function () {
       plot.textContent = 'CO₂ history unavailable';
       plot.classList.add('co2-plot-error');
     });
 
-  function drawPlot(rows) {
+  function drawPlot(rows, globalRows) {
     var data = rows.map(function (d) {
       var p = String(d.date || '').split('-');
       var year = Number(p[0]), month = Number(p[1]), ppm = Number(d.ppm);
       return { date: d.date, x: year + (month - 0.5) / 12, ppm: ppm };
     }).filter(function (d) { return isFinite(d.x) && isFinite(d.ppm); });
 
-    if (data.length < 2) throw new Error('no valid history');
+    var globalData = globalRows.map(function (d) {
+      return { x: Number(d.year) + 0.5, ppm: Number(d.ppm) };
+    }).filter(function (d) { return isFinite(d.x) && isFinite(d.ppm); });
+
+    if (data.length < 2 || globalData.length < 2) throw new Error('no valid history');
 
     var W = 1000, H = 300;
     var M = { top: 14, right: 18, bottom: 38, left: 82 };
     var innerW = W - M.left - M.right, innerH = H - M.top - M.bottom;
     var minX = data[0].x, maxX = data[data.length - 1].x;
-    var values = data.map(function (d) { return d.ppm; });
+    var values = data.map(function (d) { return d.ppm; }).concat(globalData.map(function (d) { return d.ppm; }));
     var yStep = 20;
     var minY = Math.floor(Math.min.apply(null, values) / yStep) * yStep;
     var maxY = Math.ceil(Math.max.apply(null, values) / yStep) * yStep;
@@ -48,10 +57,14 @@
     function sx(x) { return M.left + (x - minX) / (maxX - minX) * innerW; }
     function sy(y) { return M.top + (maxY - y) / (maxY - minY) * innerH; }
 
-    var path = data.map(function (d, i) {
-      return (i ? 'L' : 'M') + sx(d.x).toFixed(2) + ',' + sy(d.ppm).toFixed(2);
-    }).join(' ');
+    function makePath(series) {
+      return series.map(function (d, i) {
+        return (i ? 'L' : 'M') + sx(d.x).toFixed(2) + ',' + sy(d.ppm).toFixed(2);
+      }).join(' ');
+    }
 
+    var mloPath = makePath(data);
+    var globalPath = makePath(globalData);
     var svg = [];
     svg.push('<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">');
 
@@ -71,7 +84,11 @@
 
     svg.push('<line class="co2-axis" x1="' + M.left + '" y1="' + M.top + '" x2="' + M.left + '" y2="' + (H - M.bottom) + '"></line>');
     svg.push('<line class="co2-axis" x1="' + M.left + '" y1="' + (H - M.bottom) + '" x2="' + (W - M.right) + '" y2="' + (H - M.bottom) + '"></line>');
-    svg.push('<path class="co2-line" d="' + path + '"></path>');
+
+    // Global annual mean behind the Mauna Loa monthly series.
+    svg.push('<path class="co2-global-line" d="' + globalPath + '"></path>');
+    svg.push('<path class="co2-line" d="' + mloPath + '"></path>');
+
     var latest = data[data.length - 1];
     svg.push('<circle class="co2-latest" cx="' + sx(latest.x) + '" cy="' + sy(latest.ppm) + '" r="3.5"></circle>');
     svg.push('<text class="co2-y-title" x="18" y="' + (M.top + innerH / 2) + '" text-anchor="middle" transform="rotate(-90 18 ' + (M.top + innerH / 2) + ')">CO₂ (ppm)</text>');

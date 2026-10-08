@@ -63,3 +63,18 @@ footer .footer-container { font-size: 0.85rem !important; }
   .co2-axis-label { font-size: 20px !important; }
   /* Y-axis title: CO₂ (ppm) */
   .co2-y-title { font-size: 24px !important; } }
+.co2-global-line { fill: none; stroke: #ffa34b; stroke-width: 2; vector-effect: non-scaling-stroke; }
+
+/* Latest Mauna Loa monthly point follows the current light/dark theme. */
+.co2-latest { fill: currentColor; stroke: currentColor; }
+
+/* Optional legend styles (needed if using footer-global.html). */
+.co2-legend { display: flex; justify-content: center; gap: 1.25rem; margin-top: .2rem; font-size: .75rem !important; color: inherit; }
+
+.co2-legend > span { display: inline-flex; align-items: center; gap: .35rem; }
+
+.co2-legend-line { display: inline-block; width: 1.6rem; border-top: 2px solid currentColor; }
+
+.co2-legend-global { border-top-color: #ffa34b; }
+
+@media (max-width: 600px) { .co2-legend { gap: .75rem; flex-wrap: wrap; } }

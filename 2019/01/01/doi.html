@@ -81,12 +81,15 @@
 
     </main><footer>
   <figure class="co2-figure" aria-labelledby="co2-plot-title">
-    <figcaption id="co2-plot-title">Atmospheric CO₂ at Mauna Loa (monthly mean)</figcaption>
-    <div id="co2-plot" class="co2-plot" role="img" aria-label="Monthly mean atmospheric carbon dioxide concentration at Mauna Loa from 1958 to present"></div>
+    <figcaption id="co2-plot-title">Atmospheric CO₂</figcaption>
+    <div id="co2-plot" class="co2-plot" role="img" aria-label="Atmospheric carbon dioxide: Mauna Loa monthly mean and global annual mean"></div>
+    <div class="co2-legend" aria-hidden="true">
+      <span><span class="co2-legend-line co2-legend-mlo"></span>Mauna Loa monthly mean</span>
+      <span><span class="co2-legend-line co2-legend-global"></span>Global annual mean</span>
+    </div>
   </figure>
 
   <div class="footer-container">
-    <!-- Row 1: CO2 data + source -->
     <div class="footer-row-bottom">
       <span class="footer-left" id="co2-now">CO₂: loading…</span>
       <span class="footer-right">
@@ -95,15 +98,12 @@
         </span>
       </span>
     </div>
-
-    <!-- Row 2: copyright + time -->
     <div class="footer-row-top">
       <span class="footer-left">© GMCL</span>
       <span class="footer-right" id="datetime"></span>
     </div>
   </div>
 
-  <!-- scripts -->
   <script src="/assets/scripts/script_time.js"></script>
   <script src="/assets/scripts/theme.js" defer></script>
   <script src="/assets/scripts/co2-local.js" defer></script>
