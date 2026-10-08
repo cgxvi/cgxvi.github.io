@@ -78,3 +78,35 @@ footer .footer-container { font-size: 0.85rem !important; }
 .co2-legend-global { border-top-color: #ffa34b; }
 
 @media (max-width: 600px) { .co2-legend { gap: .75rem; flex-wrap: wrap; } }
+/* Regional atmospheric-equilibrium anthropogenic carbon plot */
+.cant-figure { margin-top: 1.15rem; }
+
+.cant-note { margin-top: .35rem; font-size: .72rem !important; line-height: 1.35; text-align: center; opacity: .78; }
+
+.cant-line { fill: none; stroke: currentColor; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+
+.cant-atlantic { stroke-dasharray: none; }
+
+.cant-pacific { stroke-dasharray: 9 5; }
+
+.cant-indian { stroke-dasharray: 2 4; }
+
+.cant-southern { stroke-dasharray: 10 4 2 4; }
+
+.cant-arctic { stroke: #ffa34b; stroke-width: 2; stroke-dasharray: none; }
+
+.cant-legend { gap: 1rem; }
+
+.cant-legend-atlantic { border-top-style: solid; }
+
+.cant-legend-pacific { border-top-style: dashed; }
+
+.cant-legend-indian { border-top-style: dotted; }
+
+.cant-legend-southern { border-top-style: dashed; opacity: .7; }
+
+.cant-legend-arctic { border-top-color: #ffa34b; }
+
+@media (max-width: 600px) { .cant-figure { margin-top: .9rem; }
+  .cant-note { font-size: .72rem !important; }
+  .cant-legend { gap: .65rem; } }

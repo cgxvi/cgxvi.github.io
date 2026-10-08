@@ -76,12 +76,29 @@
     </div>
   </figure>
 
+  <figure class="co2-figure cant-figure" aria-labelledby="cant-plot-title">
+    <figcaption id="cant-plot-title">Equilibrium anthropogenic carbon</figcaption>
+    <div id="cant-plot" class="co2-plot cant-plot" role="img" aria-label="Atmospheric-equilibrium anthropogenic carbon for Atlantic, Pacific, Indian, Arctic and Southern Ocean RECCAP2 regions"></div>
+    <div class="co2-legend cant-legend" aria-hidden="true">
+      <span><span class="co2-legend-line cant-legend-atlantic"></span>Atlantic</span>
+      <span><span class="co2-legend-line cant-legend-pacific"></span>Pacific</span>
+      <span><span class="co2-legend-line cant-legend-indian"></span>Indian</span>
+      <span><span class="co2-legend-line cant-legend-arctic"></span>Arctic</span>
+      <span><span class="co2-legend-line cant-legend-southern"></span>Southern</span>
+    </div>
+    <div class="cant-note">
+      Cₐₙₜ: equilibrium DIC increase from historical atmospheric CO₂ using GLODAPv3 surface (&lt;10 dbar) carbonate chemistry; area-weighted over sampled RECCAP2 1° cells. Calculation: PyCO2SYS.
+    </div>
+  </figure>
+
   <div class="footer-container">
     <div class="footer-row-bottom">
       <span class="footer-left" id="co2-now">CO₂: loading…</span>
       <span class="footer-right">
         <span class="footer-source">
-          Data: <a href="https://gml.noaa.gov/ccgg/trends/">NOAA GML CO₂ trends</a>
+          Data: <a href="https://gml.noaa.gov/ccgg/trends/">NOAA GML CO₂ trends</a> ·
+          <a href="https://glodap.info/">GLODAPv3</a> ·
+          <a href="https://reccap2-ocean.github.io/regions/">RECCAP2</a>
         </span>
       </span>
     </div>

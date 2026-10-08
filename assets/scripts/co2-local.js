@@ -2,6 +2,7 @@
 (function () {
   var out = document.getElementById('co2-now');
   var plot = document.getElementById('co2-plot');
+  var cantPlot = document.getElementById('cant-plot');
 
   if (out) {
     fetch('/assets/co2.json', { cache: 'no-cache' })
@@ -14,7 +15,7 @@
       .catch(function () { out.textContent = 'CO₂: unavailable'; });
   }
 
-  if (!plot) return;
+  if (!plot && !cantPlot) return;
 
   Promise.all([
     fetch('/assets/co2-history.json', { cache: 'no-cache' }).then(function (r) {
@@ -22,77 +23,145 @@
     }),
     fetch('/assets/co2-global.json', { cache: 'no-cache' }).then(function (r) {
       return r.ok ? r.json() : Promise.reject(new Error('Global history unavailable'));
+    }),
+    fetch('/assets/RECCAP2_regional_equilibrium_Cant.csv', { cache: 'no-cache' }).then(function (r) {
+      return r.ok ? r.text() : Promise.reject(new Error('Cant history unavailable'));
     })
   ])
     .then(function (sets) {
-      drawPlot(sets[0], sets[1]);
+      var monthly = parseMonthly(sets[0]);
+      var globalAnnual = parseGlobal(sets[1]);
+      var cant = parseCantCsv(sets[2]);
+      if (monthly.length < 2) throw new Error('no valid monthly history');
+
+      // Both figures use the same x-domain: first Mauna Loa monthly point
+      // through the latest available NOAA monthly point.
+      var minX = monthly[0].x;
+      var maxX = monthly[monthly.length - 1].x;
+
+      if (plot) drawAtmospheric(plot, monthly, globalAnnual, minX, maxX);
+      if (cantPlot) drawCant(cantPlot, cant, minX, maxX);
     })
     .catch(function () {
-      plot.textContent = 'CO₂ history unavailable';
-      plot.classList.add('co2-plot-error');
+      if (plot) {
+        plot.textContent = 'CO₂ history unavailable';
+        plot.classList.add('co2-plot-error');
+      }
+      if (cantPlot) {
+        cantPlot.textContent = 'Cₐₙₜ history unavailable';
+        cantPlot.classList.add('co2-plot-error');
+      }
     });
 
-  function drawPlot(rows, globalRows) {
-    var data = rows.map(function (d) {
+  function parseMonthly(rows) {
+    return rows.map(function (d) {
       var p = String(d.date || '').split('-');
       var year = Number(p[0]), month = Number(p[1]), ppm = Number(d.ppm);
       return { date: d.date, x: year + (month - 0.5) / 12, ppm: ppm };
     }).filter(function (d) { return isFinite(d.x) && isFinite(d.ppm); });
+  }
 
-    var globalData = globalRows.map(function (d) {
+  function parseGlobal(rows) {
+    return rows.map(function (d) {
       return { x: Number(d.year) + 0.5, ppm: Number(d.ppm) };
     }).filter(function (d) { return isFinite(d.x) && isFinite(d.ppm); });
+  }
 
-    if (data.length < 2 || globalData.length < 2) throw new Error('no valid history');
+  function parseCantCsv(text) {
+    var lines = text.trim().split(/\r?\n/);
+    if (lines.length < 2) return [];
+    var headers = lines[0].split(',').map(function (s) { return s.trim(); });
+    return lines.slice(1).map(function (line) {
+      var v = line.split(',');
+      var row = {};
+      headers.forEach(function (h, i) { row[h] = v[i]; });
+      return {
+        x: Number(row.year) + 0.5,
+        atlantic: Number(row.cant_atlantic),
+        pacific: Number(row.cant_pacific),
+        indian: Number(row.cant_indian),
+        arctic: Number(row.cant_arctic),
+        southern: Number(row.cant_southern)
+      };
+    }).filter(function (d) {
+      return isFinite(d.x) && isFinite(d.atlantic) && isFinite(d.pacific) &&
+        isFinite(d.indian) && isFinite(d.arctic) && isFinite(d.southern);
+    });
+  }
 
+  function geometry() {
     var W = 1000, H = 300;
     var M = { top: 14, right: 18, bottom: 38, left: 82 };
-    var innerW = W - M.left - M.right, innerH = H - M.top - M.bottom;
-    var minX = data[0].x, maxX = data[data.length - 1].x;
-    var values = data.map(function (d) { return d.ppm; }).concat(globalData.map(function (d) { return d.ppm; }));
-    var yStep = 20;
-    var minY = Math.floor(Math.min.apply(null, values) / yStep) * yStep;
-    var maxY = Math.ceil(Math.max.apply(null, values) / yStep) * yStep;
+    return { W: W, H: H, M: M, innerW: W - M.left - M.right, innerH: H - M.top - M.bottom };
+  }
 
-    function sx(x) { return M.left + (x - minX) / (maxX - minX) * innerW; }
-    function sy(y) { return M.top + (maxY - y) / (maxY - minY) * innerH; }
+  function axes(svg, g, minX, maxX, minY, maxY, yStep, yTitle) {
+    function sx(x) { return g.M.left + (x - minX) / (maxX - minX) * g.innerW; }
+    function sy(y) { return g.M.top + (maxY - y) / (maxY - minY) * g.innerH; }
 
-    function makePath(series) {
-      return series.map(function (d, i) {
-        return (i ? 'L' : 'M') + sx(d.x).toFixed(2) + ',' + sy(d.ppm).toFixed(2);
-      }).join(' ');
-    }
-
-    var mloPath = makePath(data);
-    var globalPath = makePath(globalData);
-    var svg = [];
-    svg.push('<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">');
-
-    for (var y = minY; y <= maxY; y += yStep) {
+    for (var y = minY; y <= maxY + 1e-9; y += yStep) {
       var yy = sy(y);
-      svg.push('<line class="co2-grid" x1="' + M.left + '" y1="' + yy + '" x2="' + (W - M.right) + '" y2="' + yy + '"></line>');
-      svg.push('<text class="co2-axis-label" x="' + (M.left - 10) + '" y="' + (yy + 4) + '" text-anchor="end">' + y + '</text>');
+      svg.push('<line class="co2-grid" x1="' + g.M.left + '" y1="' + yy + '" x2="' + (g.W - g.M.right) + '" y2="' + yy + '"></line>');
+      svg.push('<text class="co2-axis-label" x="' + (g.M.left - 10) + '" y="' + (yy + 4) + '" text-anchor="end">' + Math.round(y) + '</text>');
     }
 
     var startYear = Math.ceil(minX / 10) * 10;
     var endYear = Math.floor(maxX / 10) * 10;
     for (var yr = startYear; yr <= endYear; yr += 10) {
       var xx = sx(yr);
-      svg.push('<line class="co2-tick" x1="' + xx + '" y1="' + (H - M.bottom) + '" x2="' + xx + '" y2="' + (H - M.bottom + 5) + '"></line>');
-      svg.push('<text class="co2-axis-label" x="' + xx + '" y="' + (H - 12) + '" text-anchor="middle">' + yr + '</text>');
+      svg.push('<line class="co2-tick" x1="' + xx + '" y1="' + (g.H - g.M.bottom) + '" x2="' + xx + '" y2="' + (g.H - g.M.bottom + 5) + '"></line>');
+      svg.push('<text class="co2-axis-label" x="' + xx + '" y="' + (g.H - 12) + '" text-anchor="middle">' + yr + '</text>');
     }
 
-    svg.push('<line class="co2-axis" x1="' + M.left + '" y1="' + M.top + '" x2="' + M.left + '" y2="' + (H - M.bottom) + '"></line>');
-    svg.push('<line class="co2-axis" x1="' + M.left + '" y1="' + (H - M.bottom) + '" x2="' + (W - M.right) + '" y2="' + (H - M.bottom) + '"></line>');
+    svg.push('<line class="co2-axis" x1="' + g.M.left + '" y1="' + g.M.top + '" x2="' + g.M.left + '" y2="' + (g.H - g.M.bottom) + '"></line>');
+    svg.push('<line class="co2-axis" x1="' + g.M.left + '" y1="' + (g.H - g.M.bottom) + '" x2="' + (g.W - g.M.right) + '" y2="' + (g.H - g.M.bottom) + '"></line>');
+    svg.push('<text class="co2-y-title" x="18" y="' + (g.M.top + g.innerH / 2) + '" text-anchor="middle" transform="rotate(-90 18 ' + (g.M.top + g.innerH / 2) + ')">' + yTitle + '</text>');
 
-    // Global annual mean behind the Mauna Loa monthly series.
-    svg.push('<path class="co2-global-line" d="' + globalPath + '"></path>');
-    svg.push('<path class="co2-line" d="' + mloPath + '"></path>');
+    return { sx: sx, sy: sy };
+  }
+
+  function pathFor(series, xKey, yKey, sx, sy) {
+    return series.map(function (d, i) {
+      return (i ? 'L' : 'M') + sx(d[xKey]).toFixed(2) + ',' + sy(d[yKey]).toFixed(2);
+    }).join(' ');
+  }
+
+  function drawAtmospheric(target, data, globalData, minX, maxX) {
+    var g = geometry();
+    var values = data.map(function (d) { return d.ppm; }).concat(globalData.map(function (d) { return d.ppm; }));
+    var yStep = 20;
+    var minY = Math.floor(Math.min.apply(null, values) / yStep) * yStep;
+    var maxY = Math.ceil(Math.max.apply(null, values) / yStep) * yStep;
+    var svg = ['<svg viewBox="0 0 ' + g.W + ' ' + g.H + '" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'];
+    var a = axes(svg, g, minX, maxX, minY, maxY, yStep, 'CO₂ (ppm)');
+
+    svg.push('<path class="co2-global-line" d="' + pathFor(globalData, 'x', 'ppm', a.sx, a.sy) + '"></path>');
+    svg.push('<path class="co2-line" d="' + pathFor(data, 'x', 'ppm', a.sx, a.sy) + '"></path>');
 
     var latest = data[data.length - 1];
-    svg.push('<circle class="co2-latest" cx="' + sx(latest.x) + '" cy="' + sy(latest.ppm) + '" r="3.5"></circle>');
-    svg.push('<text class="co2-y-title" x="18" y="' + (M.top + innerH / 2) + '" text-anchor="middle" transform="rotate(-90 18 ' + (M.top + innerH / 2) + ')">CO₂ (ppm)</text>');
+    svg.push('<circle class="co2-latest" cx="' + a.sx(latest.x) + '" cy="' + a.sy(latest.ppm) + '" r="3.5"></circle>');
     svg.push('</svg>');
-    plot.innerHTML = svg.join('');
+    target.innerHTML = svg.join('');
+  }
+
+  function drawCant(target, data, minX, maxX) {
+    data = data.filter(function (d) { return d.x >= minX; });
+    if (data.length < 2) throw new Error('no valid Cant history');
+
+    var g = geometry();
+    var vals = [];
+    data.forEach(function (d) { vals.push(d.atlantic, d.pacific, d.indian, d.arctic, d.southern); });
+    var yStep = 20;
+    var minY = Math.floor(Math.min.apply(null, vals) / yStep) * yStep;
+    var maxY = Math.ceil(Math.max.apply(null, vals) / yStep) * yStep;
+    var svg = ['<svg viewBox="0 0 ' + g.W + ' ' + g.H + '" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'];
+    var a = axes(svg, g, minX, maxX, minY, maxY, yStep, 'Cₐₙₜ (µmol kg⁻¹)');
+
+    ['atlantic', 'pacific', 'indian', 'southern', 'arctic'].forEach(function (region) {
+      svg.push('<path class="cant-line cant-' + region + '" d="' + pathFor(data, 'x', region, a.sx, a.sy) + '"></path>');
+    });
+
+    svg.push('</svg>');
+    target.innerHTML = svg.join('');
   }
 })();
