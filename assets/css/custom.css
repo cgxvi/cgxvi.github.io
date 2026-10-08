@@ -60,6 +60,6 @@ footer .footer-container { font-size: 0.85rem !important; }
 
 @media (max-width: 600px) { .co2-figure { margin-bottom: .75rem; }
   /* Tick labels: 300, 320, 1960, 1980, etc. */
-  .co2-axis-label { font-size: 100px; }
+  .co2-axis-label { font-size: 20px !important; }
   /* Y-axis title: CO₂ (ppm) */
-  .co2-y-title { font-size: 120px; } }
+  .co2-y-title { font-size: 24px !important; } }
