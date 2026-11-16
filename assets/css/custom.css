@@ -110,3 +110,5 @@ footer .footer-container { font-size: 0.85rem !important; }
 @media (max-width: 600px) { .cant-figure { margin-top: .9rem; }
   .cant-note { font-size: .72rem !important; }
   .cant-legend { gap: .65rem; } }
+/* Temporarily hide the anthropogenic carbon plot */
+.cant-figure { display: none !important; }
